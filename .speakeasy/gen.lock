@@ -5,12 +5,14 @@ management:
   docVersion: 0.2.1
   speakeasyVersion: 1.725.0
   generationVersion: 2.836.5
-  releaseVersion: 0.1.0
-  configChecksum: e79707b0073203ae86288faef433b6cf
+  releaseVersion: 0.1.1
+  configChecksum: 46472c652c96c87545cd413451e7cbe6
+  repoURL: https://github.com/cloudinary/account-provisioning-python.git
+  installationURL: https://github.com/cloudinary/account-provisioning-python.git
 persistentEdits:
-  generation_id: 0949abb5-dfc7-4ece-922a-7b71c8c41ed4
-  pristine_commit_hash: 266e71cf34dbf3243b64ba5e606d56d642d7f5dd
-  pristine_tree_hash: 2aab5253bd02d6d0544654f4fab49d61ddc6020e
+  generation_id: 523316e1-b15b-4203-be9e-5ab190c5df43
+  pristine_commit_hash: 0a60fd101337eeb6c629bc0fa77cd7c519e65ea4
+  pristine_tree_hash: 59b84db12d8ea45290c3057c2a204a3c51c65323
 features:
   python:
     additionalDependencies: 1.0.0
@@ -37,8 +39,8 @@ features:
 trackedFiles:
   .devcontainer/README.md:
     id: b170c0f184ac
-    last_write_checksum: sha1:855de42ee70c98328691f5f2f736895323a7a352
-    pristine_git_object: 555854e54c06c221b05c81047b4eece1f18f1f65
+    last_write_checksum: sha1:a64fd5632ab19b45848b8f60745abedb200090d7
+    pristine_git_object: cb1524f6c54a38c16c4db8fa0a60539d2319cc53
   .devcontainer/devcontainer.json:
     id: b34062a34eb1
     last_write_checksum: sha1:fbbce5654b8990b172a9ffe841d7635cd51c495b
@@ -829,12 +831,16 @@ trackedFiles:
     pristine_git_object: b41e83b1af81e4f783a4007869370c0d60504b45
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:d8ab9afb759a8e61c3d8a519a430392977166f8c
-    pristine_git_object: ca7dac943ab9e7801cafc73493460f9df848d131
+    last_write_checksum: sha1:c9388bb13830e7947330da8987373aca23239769
+    pristine_git_object: 83a0cf8ef3715d4e2a0c893890943bca3621b277
+  scripts/prepare_readme.py:
+    id: e0c5957a6035
+    last_write_checksum: sha1:a5741d35e04ef110fcd07926f8fcfdbf7e61ffb7
+    pristine_git_object: 062f20a7ca52115c9ac6f2fc64fc9bf989d73d93
   scripts/publish.sh:
     id: fe273b08f514
-    last_write_checksum: sha1:11c8a74f613fdb29f432e3feafb84072eeba6428
-    pristine_git_object: 5eb52a49483fd30944c0a030f0decde1360f6765
+    last_write_checksum: sha1:b31bafc19c15ab5ea925fdf8d5d4adce2b115a63
+    pristine_git_object: 2a3ead70ccc6228cbae1c5c8a319b1399f3804ea
   src/cloudinary_account_provisioning/__init__.py:
     id: a98ea32e5e6e
     last_write_checksum: sha1:36306d1d404b6aeb912d27f1d9c52f098ff7bf9b
@@ -853,8 +859,8 @@ trackedFiles:
     pristine_git_object: 37dc1e0c10cef89a3c7f8218b2cb9694a4944f83
   src/cloudinary_account_provisioning/_version.py:
     id: 76c72d55f9f0
-    last_write_checksum: sha1:06b9afd3a6b34c3c6a815a55c06bc6f9260d4b5b
-    pristine_git_object: 698824bdb9604f7cd917c105adfadbb8f7f214e1
+    last_write_checksum: sha1:64496cd4562f3d2586734927583485667d054cc3
+    pristine_git_object: 0e9e45dc735f9393bfef0defc1915557adfcca38
   src/cloudinary_account_provisioning/accesskeys.py:
     id: 3d4cc397b561
     last_write_checksum: sha1:595e9b632c47beea5a9b96b12e8d03ba79490005

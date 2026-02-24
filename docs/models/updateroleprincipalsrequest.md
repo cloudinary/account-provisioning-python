@@ -1,0 +1,9 @@
+# UpdateRolePrincipalsRequest
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             | Example                                                                                 |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `operation`                                                                             | [Optional[models.OperationEnum]](../models/operationenum.md)                            | :heavy_minus_sign:                                                                      | Specifies the operation to perform. Use `add` to associate or `remove` to disassociate. | add                                                                                     |
+| `principals`                                                                            | List[[models.UpdateRolePrincipal](../models/updateroleprincipal.md)]                    | :heavy_minus_sign:                                                                      | N/A                                                                                     |                                                                                         |

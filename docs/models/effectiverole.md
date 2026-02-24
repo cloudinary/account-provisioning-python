@@ -1,0 +1,9 @@
+# EffectiveRole
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          | Example                                                                              |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `id`                                                                                 | *Optional[str]*                                                                      | :heavy_minus_sign:                                                                   | The unique identifier of the role.                                                   | custom::global::admin                                                                |
+| `system_policies`                                                                    | List[[models.EffectivePolicy](../models/effectivepolicy.md)]                         | :heavy_minus_sign:                                                                   | A list of all the predefined permission policies that are associated with this role. |                                                                                      |

@@ -1,0 +1,11 @@
+# ProductEnvironmentRequest
+
+
+## Fields
+
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             | Example                                                                 |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `name`                                                                  | *str*                                                                   | :heavy_check_mark:                                                      | The display name for the product environment.                           | Product3 Application                                                    |
+| `cloud_name`                                                            | *Optional[str]*                                                         | :heavy_minus_sign:                                                      | The Cloudinary cloud name (optional, default is auto-generated).        | product3                                                                |
+| `base_sub_account_id`                                                   | *Optional[str]*                                                         | :heavy_minus_sign:                                                      | The ID of another product environment to copy settings from (optional). | 0aaaaa1bbbbb2ccccc3ddddd4eeeee5f                                        |
+| `custom_attributes`                                                     | [Optional[models.CustomAttributes]](../models/customattributes.md)      | :heavy_minus_sign:                                                      | Custom attributes associated with the product environment (optional).   |                                                                         |
