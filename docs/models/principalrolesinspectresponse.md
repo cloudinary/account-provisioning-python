@@ -1,0 +1,9 @@
+# PrincipalRolesInspectResponse
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `data`                                                                                               | [Optional[models.PrincipalRolesInspectResponseData]](../models/principalrolesinspectresponsedata.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| `next_cursor`                                                                                        | *Optional[str]*                                                                                      | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
