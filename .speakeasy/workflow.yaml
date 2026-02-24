@@ -1,0 +1,19 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    Cloudinary-Provisioning-OAS:
+        inputs:
+            - location: https://cloudinary.github.io/api-schemas/provisioning/schema.yml
+        overlays:
+            - location: .speakeasy/speakeasy-modifications-overlay.yaml
+            - location: https://cloudinary.github.io/api-schemas/overlays/security-scheme-account-overlay.yaml
+        registry:
+            location: registry.speakeasyapi.dev/cloudinary/cloudinary/cloudinary-provisioning
+targets:
+    cloudinary:
+        target: python
+        source: Cloudinary-Provisioning-OAS
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/cloudinary/cloudinary/cloudinary-provisioning-python-code-samples
+            blocking: true
