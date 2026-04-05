@@ -9,6 +9,7 @@ management:
   configChecksum: 1139c60ef009e65bda19885e23c082f2
   repoURL: https://github.com/cloudinary/account-provisioning-python.git
   installationURL: https://github.com/cloudinary/account-provisioning-python.git
+  published: true
 persistentEdits:
   generation_id: 6265eb69-4637-47e8-9d77-a9b932da397c
   pristine_commit_hash: 597f678bd2f7e37c0cfd850c920860efd7f0e330
