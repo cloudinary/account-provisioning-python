@@ -1,0 +1,62 @@
+---
+description: Speakeasy SDK generation configuration and workflow conventions
+globs: .speakeasy/**/*.yaml
+alwaysApply: false
+---
+
+# Speakeasy SDK Configuration
+
+## Customization layers (per [Speakeasy docs](https://www.speakeasy.com/docs/sdks/customize/basics))
+
+1. **OpenAPI overlays** (`.speakeasy/speakeasy-modifications-overlay.yaml`) — schema-level changes
+2. **`gen.yaml`** — generation config (naming, params, env vars, etc.)
+3. **SDK hooks** (`src/cloudinary_account_provisioning/_hooks/`) — custom auth, request/response transforms
+4. **Custom code** — Speakeasy's 3-way merge preserves edits across regenerations (`persistentEdits`)
+5. **Post-generation scripts** (`scripts/`) — recommended for fixes Speakeasy can't handle natively
+
+## gen.yaml
+
+Key Python settings:
+- `maxMethodParams: 4` with `methodArguments: infer-optional-args` — Python keyword args are idiomatic
+- `usageSDKInit: CldProvisioning()` — clean snippet init (relies on envVarPrefix for credentials)
+- `usageSDKInitImports: []` — avoid duplicate imports in snippets
+- `envVarPrefix: CLOUDINARY` — env var auto-loading for security and globals
+- `asyncMode: split` — separate `CldProvisioning` (sync) and `AsyncCldProvisioning` (async) classes
+- `packageManager: uv` — faster than poetry, Speakeasy default
+- `enableCustomCodeRegions: true` — preserve custom code blocks across regenerations
+- `forwardCompatibleEnumsByDefault: true` — resilient to new API enum values
+- `forwardCompatibleUnionsByDefault: tagged-only` — resilient to new API union variants
+- `flattenGlobalSecurity: true`, `responseFormat: flat`, `enumFormat: enum`
+
+All generation fix flags enabled (`securityFeb2025`, `sharedErrorComponentsApr2025`, `sharedNestedComponentsJan2026`, `nameOverrideFeb2026`).
+
+## workflow.yaml
+
+- PyPI publishing uses Speakeasy variable syntax in workflow.yaml
+- The GitHub secret name is `PYPI_TOKEN`
+
+## Publishing (pr mode)
+
+- `sdk_generation.yaml` generates SDK and opens a PR (`mode: pr`)
+- `sdk_publish.yaml` publishes to PyPI when the PR merges (push to main + gen.lock change)
+
+## Post-generation fixes (`scripts/fix-readme.sh`)
+
+- Reorders "Available Resources and Operations" in README.md to match OpenAPI schema tag order
+- Reads the schema URL from `.speakeasy/workflow.yaml` automatically — portable across SDK repos
+- Runs as part of `scripts/publish.sh` before PyPI publishing
+- **SIGPIPE pitfall**: never use `grep | head -1` with `set -eo pipefail` — use `grep -m 1` instead
+- Script is idempotent — safe to run multiple times
+
+## README sections
+
+To take over a Speakeasy-managed README section:
+1. Change `<!-- Start SectionName [tag] -->` to `<!-- Custom SectionName [tag] -->`
+2. **Remove** the `<!-- End SectionName [tag] -->` comment entirely
+3. If both markers remain, Speakeasy regenerates a duplicate section
+
+## Committing changes
+
+- **Separate generated from non-generated files**: commit config/scripts/custom code independently from Speakeasy-generated code
+- Use `chore:` prefix for non-release commits (won't trigger publish)
+- Generated code changes should come through the Speakeasy PR workflow, not manual commits

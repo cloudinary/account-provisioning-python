@@ -21,17 +21,17 @@ with CldProvisioning(
 
 </br>
 
-The same SDK client can also be used to make asynchronous requests by importing asyncio.
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
 
 ```python
 # Asynchronous Example
 import asyncio
 import cloudinary_account_provisioning
-from cloudinary_account_provisioning import CldProvisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
 
 async def main():
 
-    async with CldProvisioning(
+    async with AsyncCldProvisioning(
         account_id="<id>",
         security=cloudinary_account_provisioning.Security(
             provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
@@ -39,7 +39,7 @@ async def main():
         ),
     ) as cld_provisioning:
 
-        res = await cld_provisioning.product_environments.list_async(enabled=True, prefix="product")
+        res = await cld_provisioning.product_environments.list(enabled=True, prefix="product")
 
         # Handle response
         print(res)

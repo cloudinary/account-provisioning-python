@@ -8,16 +8,18 @@ generation:
   usageSnippets:
     optionalPropertyRendering: withExample
     sdkInitStyle: constructor
+    usageSDKInit: CldProvisioning()
+    usageSDKInitImports: []
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: true
     nameResolutionFeb2025: false
     parameterOrderingFeb2024: true
     requestResponseComponentNamesFeb2024: true
-    securityFeb2025: false
-    sharedErrorComponentsApr2025: false
-    sharedNestedComponentsJan2026: false
-    nameOverrideFeb2026: false
+    securityFeb2025: true
+    sharedErrorComponentsApr2025: true
+    sharedNestedComponentsJan2026: true
+    nameOverrideFeb2026: true
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
@@ -41,7 +43,7 @@ python:
   allowedRedefinedBuiltins:
     - id
     - object
-  asyncMode: both
+  asyncMode: split
   authors:
     - Cloudinary
     - Speakeasy
@@ -60,8 +62,8 @@ python:
   flattenGlobalSecurity: true
   flattenRequests: false
   flatteningOrder: parameters-first
-  forwardCompatibleEnumsByDefault: false
-  forwardCompatibleUnionsByDefault: "false"
+  forwardCompatibleEnumsByDefault: true
+  forwardCompatibleUnionsByDefault: tagged-only
   imports:
     option: openapi
     paths:
@@ -78,7 +80,7 @@ python:
   moduleName: ""
   multipartArrayFormat: legacy
   outputModelSuffix: output
-  packageManager: poetry
+  packageManager: uv
   packageName: cloudinary-account-provisioning
   preApplyUnionDiscriminators: false
   pytestFilterWarnings: []

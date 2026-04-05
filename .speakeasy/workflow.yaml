@@ -13,6 +13,8 @@ targets:
     cloudinary:
         target: python
         source: Cloudinary-Provisioning-OAS
+        publish:
+            pypi: {}
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/cloudinary/cloudinary/cloudinary-provisioning-python-code-samples

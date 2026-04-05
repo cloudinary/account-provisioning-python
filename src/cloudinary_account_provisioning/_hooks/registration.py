@@ -1,5 +1,6 @@
 from .types import Hooks
 from .cloudinary_hook import CloudinaryAccountHook
+from .user_agent_hook import UserAgentHook
 
 
 # This file is only ever generated once on the first generation and then is free to be modified.
@@ -15,3 +16,5 @@ def init_hooks(hooks: Hooks):
     hook = CloudinaryAccountHook()
     hooks.register_sdk_init_hook(hook)
     hooks.register_before_request_hook(hook)
+
+    hooks.register_sdk_init_hook(UserAgentHook())
