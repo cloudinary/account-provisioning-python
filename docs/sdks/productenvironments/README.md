@@ -23,6 +23,7 @@ Learn more about getting product environments.
 
 <!-- UsageSnippet language="python" operationID="getProductEnvironments" method="get" path="/v1_1/provisioning/accounts/{account_id}/sub_accounts" example="ProductEnvironments" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -39,7 +40,34 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.product_environments.list(enabled=True, prefix="product")
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters
@@ -76,6 +104,7 @@ Learn more about creating product environments.
 
 <!-- UsageSnippet language="python" operationID="createProductEnvironment" method="post" path="/v1_1/provisioning/accounts/{account_id}/sub_accounts" example="ProductEnvironment3" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -96,7 +125,38 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.product_environments.create(request={
+            "name": "Product3 Application",
+            "cloud_name": "product3",
+            "base_sub_account_id": "0aaaaa1bbbbb2ccccc3ddddd4eeeee5f",
+        })
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters
@@ -128,6 +188,7 @@ Learn more about retrieving specific product environments.
 
 <!-- UsageSnippet language="python" operationID="getProductEnvironment" method="get" path="/v1_1/provisioning/accounts/{account_id}/sub_accounts/{sub_account_id}" example="ProductEnvironment1" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -144,12 +205,40 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.product_environments.get(sub_account_id="abcde1fghij2klmno3pqrst4uvwxy5z")
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 ### Example Usage: ProductEnvironment2
 
 <!-- UsageSnippet language="python" operationID="getProductEnvironment" method="get" path="/v1_1/provisioning/accounts/{account_id}/sub_accounts/{sub_account_id}" example="ProductEnvironment2" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -166,7 +255,34 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.product_environments.get(sub_account_id="abcde1fghij2klmno3pqrst4uvwxy5z")
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters
@@ -198,6 +314,7 @@ Learn more about updating product environments.
 
 <!-- UsageSnippet language="python" operationID="updateProductEnvironment" method="put" path="/v1_1/provisioning/accounts/{account_id}/sub_accounts/{sub_account_id}" example="ProductEnvironment1" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -217,7 +334,37 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.product_environments.update(sub_account_id="abcde1fghij2klmno3pqrst4uvwxy5z", product_environment_update_request={
+            "name": "Product3 Application",
+            "cloud_name": "product3",
+        })
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters
@@ -250,6 +397,7 @@ Learn more about deleting product environments.
 
 <!-- UsageSnippet language="python" operationID="deleteProductEnvironment" method="delete" path="/v1_1/provisioning/accounts/{account_id}/sub_accounts/{sub_account_id}" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -266,7 +414,34 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.product_environments.delete(sub_account_id="abcde1fghij2klmno3pqrst4uvwxy5z")
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters

@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 from .scopetypeenum import ScopeTypeEnum
+from cloudinary_account_provisioning import models
 from cloudinary_account_provisioning.types import BaseModel, UNSET_SENTINEL
 from cloudinary_account_provisioning.utils import (
     FieldMetadata,
     PathParamMetadata,
     QueryParamMetadata,
 )
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -33,7 +34,7 @@ class GetRolePrincipalsGlobals(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -135,6 +136,15 @@ class GetRolePrincipalsRequest(BaseModel):
     ] = None
     r"""The ID of the content instance (for example, a specific folder or collection). Use together with param_key to retrieve roles as they apply to a specific instance."""
 
+    @field_serializer("scope_type")
+    def serialize_scope_type(self, value):
+        if isinstance(value, str):
+            try:
+                return models.ScopeTypeEnum(value)
+            except ValueError:
+                return value
+        return value
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
@@ -154,7 +164,7 @@ class GetRolePrincipalsRequest(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:

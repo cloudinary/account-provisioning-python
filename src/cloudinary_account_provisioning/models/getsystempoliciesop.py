@@ -3,13 +3,14 @@
 from __future__ import annotations
 from .permissiontypeenum import PermissionTypeEnum
 from .scopetypeenum import ScopeTypeEnum
+from cloudinary_account_provisioning import models
 from cloudinary_account_provisioning.types import BaseModel, UNSET_SENTINEL
 from cloudinary_account_provisioning.utils import (
     FieldMetadata,
     PathParamMetadata,
     QueryParamMetadata,
 )
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -34,7 +35,7 @@ class GetSystemPoliciesGlobals(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -63,6 +64,24 @@ class GetSystemPoliciesRequest(BaseModel):
     ] = None
     r"""Specifies the level for retrieving policies or roles, either at the account level or within product environments."""
 
+    @field_serializer("permission_type")
+    def serialize_permission_type(self, value):
+        if isinstance(value, str):
+            try:
+                return models.PermissionTypeEnum(value)
+            except ValueError:
+                return value
+        return value
+
+    @field_serializer("scope_type")
+    def serialize_scope_type(self, value):
+        if isinstance(value, str):
+            try:
+                return models.ScopeTypeEnum(value)
+            except ValueError:
+                return value
+        return value
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(["permission_type", "scope_type"])
@@ -71,7 +90,7 @@ class GetSystemPoliciesRequest(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:

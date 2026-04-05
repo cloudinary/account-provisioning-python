@@ -3,6 +3,14 @@
 Which response parameter to sort by. **Possible values**: `api_key`, `created_at`, `name`, `enabled`.
 
 
+## Example Usage
+
+```python
+from cloudinary_account_provisioning.models import SortBy
+
+value = SortBy.API_KEY
+```
+
 
 ## Values
 

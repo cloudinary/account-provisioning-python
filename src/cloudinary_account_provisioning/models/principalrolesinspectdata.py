@@ -3,7 +3,9 @@
 from __future__ import annotations
 from .principalrolesdata import PrincipalRolesData, PrincipalRolesDataTypedDict
 from .principaltypeenum import PrincipalTypeEnum
+from cloudinary_account_provisioning import models
 from cloudinary_account_provisioning.types import BaseModel
+from pydantic import field_serializer
 from typing import List
 from typing_extensions import TypedDict
 
@@ -24,3 +26,12 @@ class PrincipalRolesInspectData(BaseModel):
     r"""The unique identifier of the principal."""
 
     roles: List[PrincipalRolesData]
+
+    @field_serializer("type")
+    def serialize_type(self, value):
+        if isinstance(value, str):
+            try:
+                return models.PrincipalTypeEnum(value)
+            except ValueError:
+                return value
+        return value

@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 from .principaltypeenum import PrincipalTypeEnum
+from cloudinary_account_provisioning import models
 from cloudinary_account_provisioning.types import BaseModel
+from pydantic import field_serializer
 from typing_extensions import TypedDict
 
 
@@ -19,3 +21,12 @@ class Principal(BaseModel):
 
     id: str
     r"""The unique identifier of the principal."""
+
+    @field_serializer("type")
+    def serialize_type(self, value):
+        if isinstance(value, str):
+            try:
+                return models.PrincipalTypeEnum(value)
+            except ValueError:
+                return value
+        return value

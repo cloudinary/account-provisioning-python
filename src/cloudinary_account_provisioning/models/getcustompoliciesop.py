@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .scopetypeenum import ScopeTypeEnum
+from cloudinary_account_provisioning import models
 from cloudinary_account_provisioning.types import (
     BaseModel,
     Nullable,
@@ -14,7 +15,7 @@ from cloudinary_account_provisioning.utils import (
     PathParamMetadata,
     QueryParamMetadata,
 )
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -39,7 +40,7 @@ class GetCustomPoliciesGlobals(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:
@@ -90,6 +91,15 @@ class GetCustomPoliciesRequest(BaseModel):
     ] = None
     r"""A pagination cursor for fetching subsequent results."""
 
+    @field_serializer("scope_type")
+    def serialize_scope_type(self, value):
+        if isinstance(value, str):
+            try:
+                return models.ScopeTypeEnum(value)
+            except ValueError:
+                return value
+        return value
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(["scope_type", "scope_id", "enabled", "cursor"])
@@ -99,7 +109,7 @@ class GetCustomPoliciesRequest(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member

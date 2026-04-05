@@ -19,6 +19,7 @@ Retrieves the catalog of predefined system roles and their associated policies.
 
 <!-- UsageSnippet language="python" operationID="getSystemRolesAndPoliciesCatalog" method="get" path="/v2/accounts/permissions/public/catalog" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -34,7 +35,33 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.public.get_catalog()
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters
@@ -61,6 +88,7 @@ Validate a Cedar policy
 
 <!-- UsageSnippet language="python" operationID="validateCedarPolicy" method="post" path="/v2/accounts/permissions/public/validate" example="ValidateCedarPolicyResponseExample" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -78,7 +106,35 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.public.validate_policy(request={
+            "policy": "permit(principal == Cloudinary::APIKy::\"1234\", action == Cloudinary::Action::\"read\", resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\"asdfjkl12347890\")} ;",
+        })
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters
@@ -106,6 +162,7 @@ Get Cedar schema
 
 <!-- UsageSnippet language="python" operationID="getCedarSchema" method="get" path="/v2/accounts/permissions/public/schema" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -121,7 +178,33 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.public.get_schema()
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters

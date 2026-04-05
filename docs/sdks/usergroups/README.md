@@ -24,6 +24,7 @@ Learn more about retrieving user groups.
 
 <!-- UsageSnippet language="python" operationID="getUserGroups" method="get" path="/v1_1/provisioning/accounts/{account_id}/user_groups" example="UserGroups" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -40,12 +41,40 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.user_groups.list(extended_details=True)
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 ### Example Usage: UserGroupsExtendedDetails
 
 <!-- UsageSnippet language="python" operationID="getUserGroups" method="get" path="/v1_1/provisioning/accounts/{account_id}/user_groups" example="UserGroupsExtendedDetails" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -62,7 +91,34 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.user_groups.list(extended_details=True)
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters
@@ -94,6 +150,7 @@ Learn more about creating user groups.
 
 <!-- UsageSnippet language="python" operationID="createUserGroup" method="post" path="/v1_1/provisioning/accounts/{account_id}/user_groups" example="UserGroupDesigners" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -113,7 +170,37 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.user_groups.create(request={
+            "name": "Designers",
+            "extended_details": False,
+        })
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters
@@ -145,6 +232,7 @@ Learn more about retrieving a specific user group.
 
 <!-- UsageSnippet language="python" operationID="getUserGroup" method="get" path="/v1_1/provisioning/accounts/{account_id}/user_groups/{group_id}" example="UserGroupDesigners" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -161,12 +249,40 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.user_groups.get(group_id="7f08f1f1fc910bf1f25274aef11d27", extended_details=True)
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 ### Example Usage: UserGroupDesignersExtendedDetails
 
 <!-- UsageSnippet language="python" operationID="getUserGroup" method="get" path="/v1_1/provisioning/accounts/{account_id}/user_groups/{group_id}" example="UserGroupDesignersExtendedDetails" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -183,7 +299,34 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.user_groups.get(group_id="7f08f1f1fc910bf1f25274aef11d27", extended_details=True)
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters
@@ -216,6 +359,7 @@ Learn more about updating a specific user group.
 
 <!-- UsageSnippet language="python" operationID="updateUserGroup" method="put" path="/v1_1/provisioning/accounts/{account_id}/user_groups/{group_id}" example="UserGroupDesignersRequest" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -234,12 +378,42 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.user_groups.update(group_id="7f08f1f1fc910bf1f25274aef11d27", user_group_request={
+            "name": "Designers and Creatives",
+        })
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 ### Example Usage: UserGroupUpdate
 
 <!-- UsageSnippet language="python" operationID="updateUserGroup" method="put" path="/v1_1/provisioning/accounts/{account_id}/user_groups/{group_id}" example="UserGroupUpdate" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -259,7 +433,37 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.user_groups.update(group_id="7f08f1f1fc910bf1f25274aef11d27", user_group_request={
+            "name": "Designers",
+            "extended_details": False,
+        })
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters
@@ -292,6 +496,7 @@ Learn more about deleting a specific user group.
 
 <!-- UsageSnippet language="python" operationID="deleteUserGroup" method="delete" path="/v1_1/provisioning/accounts/{account_id}/user_groups/{group_id}" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -308,7 +513,34 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.user_groups.delete(group_id="7f08f1f1fc910bf1f25274aef11d27")
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters
@@ -340,6 +572,7 @@ Learn more about retrieving users in a specific user group.
 
 <!-- UsageSnippet language="python" operationID="getUsersInUserGroup" method="get" path="/v1_1/provisioning/accounts/{account_id}/user_groups/{group_id}/users" example="UserGroupUsers" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -356,7 +589,34 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.user_groups.list_users(group_id="7f08f1f1fc910bf1f25274aef11d27")
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters
@@ -388,6 +648,7 @@ Learn more about adding users to a specific user group.
 
 <!-- UsageSnippet language="python" operationID="addUserToUserGroup" method="post" path="/v1_1/provisioning/accounts/{account_id}/user_groups/{group_id}/users/{user_id}" example="UserGroupUserJohn" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -404,7 +665,34 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.user_groups.add_user(group_id="7f08f1f1fc910bf1f25274aef11d27", user_id="0abed8dfcc039ea05e2a1d494fd442")
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters
@@ -437,6 +725,7 @@ Learn more about removing users from a specific user group.
 
 <!-- UsageSnippet language="python" operationID="removeUserFromUserGroup" method="delete" path="/v1_1/provisioning/accounts/{account_id}/user_groups/{group_id}/users/{user_id}" example="UserGroupUsers" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -453,7 +742,34 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.user_groups.remove_user(group_id="7f08f1f1fc910bf1f25274aef11d27", user_id="0abed8dfcc039ea05e2a1d494fd442")
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters

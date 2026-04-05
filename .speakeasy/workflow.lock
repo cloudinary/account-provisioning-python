@@ -1,4 +1,4 @@
-speakeasyVersion: 1.725.0
+speakeasyVersion: 1.761.1
 sources:
     Cloudinary-Provisioning-OAS:
         sourceNamespace: cloudinary-provisioning
@@ -6,7 +6,6 @@ sources:
         sourceBlobDigest: sha256:0c58d072e0b61c934870ce292789dd513ea1df64ec9a625f3e428fc17fcf2574
         tags:
             - latest
-            - speakeasy-sdk-regen-1771901802
             - 0.2.1
 targets:
     cloudinary:
@@ -15,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:2eb14e9aa6662f5f4f1d9ef1039678b31573aebc5765ea3e64a4d2017f9073d4
         sourceBlobDigest: sha256:0c58d072e0b61c934870ce292789dd513ea1df64ec9a625f3e428fc17fcf2574
         codeSamplesNamespace: cloudinary-provisioning-python-code-samples
-        codeSamplesRevisionDigest: sha256:77293005f11b5f2f0f8da3247f2fcce2aa0c14f2fa2f63a8d6b1cbdddd864493
+        codeSamplesRevisionDigest: sha256:e8b2e36349d3adf175f3080ff6db9243abd90d0f3fe6fd8df9770667684c288d
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -32,6 +31,8 @@ workflow:
         cloudinary:
             target: python
             source: Cloudinary-Provisioning-OAS
+            publish:
+                pypi: {}
             codeSamples:
                 registry:
                     location: registry.speakeasyapi.dev/cloudinary/cloudinary/cloudinary-provisioning-python-code-samples

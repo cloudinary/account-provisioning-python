@@ -20,6 +20,7 @@ Retrieve all roles associated with a specific principal.
 
 <!-- UsageSnippet language="python" operationID="getPrincipalRoles" method="get" path="/v2/accounts/{account_id}/permissions/principal_roles" example="GetPrincipalRolesExample" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -48,12 +49,52 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.principals.list_roles(request={
+            "principal_type": cloudinary_account_provisioning.PrincipalTypeEnum.USER,
+            "principal_id": "<id>",
+            "permission_type": cloudinary_account_provisioning.PermissionTypeEnum.GLOBAL,
+            "management_type": cloudinary_account_provisioning.ManagementTypeEnum.SYSTEM,
+            "scope_type": cloudinary_account_provisioning.ScopeTypeEnum.PRODENV,
+            "param_key": [
+                "folder_id",
+            ],
+            "param_value": [
+                "asdfjkl12347890",
+            ],
+        })
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 ### Example Usage: GetPrincipalRolesWithParamKeyValueExample
 
 <!-- UsageSnippet language="python" operationID="getPrincipalRoles" method="get" path="/v2/accounts/{account_id}/permissions/principal_roles" example="GetPrincipalRolesWithParamKeyValueExample" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -82,7 +123,46 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.principals.list_roles(request={
+            "principal_type": cloudinary_account_provisioning.PrincipalTypeEnum.USER,
+            "principal_id": "<id>",
+            "permission_type": cloudinary_account_provisioning.PermissionTypeEnum.GLOBAL,
+            "management_type": cloudinary_account_provisioning.ManagementTypeEnum.SYSTEM,
+            "scope_type": cloudinary_account_provisioning.ScopeTypeEnum.PRODENV,
+            "param_key": [
+                "folder_id",
+            ],
+            "param_value": [
+                "asdfjkl12347890",
+            ],
+        })
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters
@@ -112,6 +192,7 @@ Add or remove roles associated with a principal.
 
 <!-- UsageSnippet language="python" operationID="updatePrincipalRoles" method="put" path="/v2/accounts/{account_id}/permissions/principal_roles" example="InvalidOperationFieldErrorExample" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -140,12 +221,52 @@ with CldProvisioning(
     })
 
     # Use the SDK ...
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        await cld_provisioning.principals.update_roles(request={
+            "operation": cloudinary_account_provisioning.OperationEnum.ADD,
+            "principal": {
+                "type": cloudinary_account_provisioning.PrincipalTypeEnum.USER,
+                "id": "1234abc",
+            },
+            "roles": [
+                {
+                    "id": "marketing_content_contributor_1357fhe",
+                    "scope_id": "975l29lz02jt0836fhwi",
+                    "policy_parameters": {},
+                },
+            ],
+        })
+
+        # Use the SDK ...
+
+asyncio.run(main())
 ```
 ### Example Usage: missingPrincipalFieldsErrorExample
 
 <!-- UsageSnippet language="python" operationID="updatePrincipalRoles" method="put" path="/v2/accounts/{account_id}/permissions/principal_roles" example="missingPrincipalFieldsErrorExample" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -174,7 +295,46 @@ with CldProvisioning(
     })
 
     # Use the SDK ...
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        await cld_provisioning.principals.update_roles(request={
+            "operation": cloudinary_account_provisioning.OperationEnum.ADD,
+            "principal": {
+                "type": cloudinary_account_provisioning.PrincipalTypeEnum.USER,
+                "id": "1234abc",
+            },
+            "roles": [
+                {
+                    "id": "marketing_content_contributor_1357fhe",
+                    "scope_id": "975l29lz02jt0836fhwi",
+                    "policy_parameters": {},
+                },
+            ],
+        })
+
+        # Use the SDK ...
+
+asyncio.run(main())
 ```
 
 ### Parameters
@@ -213,6 +373,7 @@ This endpoint is useful when you want to:
 
 <!-- UsageSnippet language="python" operationID="inspect" method="get" path="/v2/accounts/{account_id}/permissions/principal_roles/inspect" example="InspectExampleAllFolders" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -238,12 +399,49 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.principals.inspect(request={
+            "scope_type": cloudinary_account_provisioning.ScopeTypeEnum.PRODENV,
+            "principal_type": cloudinary_account_provisioning.PrincipalTypeEnum.USER,
+            "param_key": [
+                "folder_id",
+            ],
+            "param_value": [
+                "asdfjkl12347890",
+            ],
+        })
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 ### Example Usage: InspectExampleFolder
 
 <!-- UsageSnippet language="python" operationID="inspect" method="get" path="/v2/accounts/{account_id}/permissions/principal_roles/inspect" example="InspectExampleFolder" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -269,12 +467,49 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.principals.inspect(request={
+            "scope_type": cloudinary_account_provisioning.ScopeTypeEnum.PRODENV,
+            "principal_type": cloudinary_account_provisioning.PrincipalTypeEnum.USER,
+            "param_key": [
+                "folder_id",
+            ],
+            "param_value": [
+                "asdfjkl12347890",
+            ],
+        })
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 ### Example Usage: InspectExampleProdEnv
 
 <!-- UsageSnippet language="python" operationID="inspect" method="get" path="/v2/accounts/{account_id}/permissions/principal_roles/inspect" example="InspectExampleProdEnv" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -300,7 +535,43 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.principals.inspect(request={
+            "scope_type": cloudinary_account_provisioning.ScopeTypeEnum.PRODENV,
+            "principal_type": cloudinary_account_provisioning.PrincipalTypeEnum.USER,
+            "param_key": [
+                "folder_id",
+            ],
+            "param_value": [
+                "asdfjkl12347890",
+            ],
+        })
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters
@@ -343,6 +614,7 @@ This endpoint is useful for:
 
 <!-- UsageSnippet language="python" operationID="inspectMultiple" method="post" path="/v2/accounts/{account_id}/permissions/principal_roles/inspect" example="InspectMultipleRequestExample" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -377,12 +649,58 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.principals.inspect_multiple(request={
+            "scope_type": cloudinary_account_provisioning.ScopeTypeEnum.PRODENV,
+            "scope_id": "975l29lz02jt0836fhwi",
+            "principals": [
+                {
+                    "type": cloudinary_account_provisioning.PrincipalTypeEnum.USER,
+                    "id": "1234abc",
+                },
+                {
+                    "type": cloudinary_account_provisioning.PrincipalTypeEnum.USER,
+                    "id": "4567xyz",
+                },
+                {
+                    "type": cloudinary_account_provisioning.PrincipalTypeEnum.API_KEY,
+                    "id": "a382ltieo893jhioqpg8urp",
+                },
+            ],
+            "policy_parameters": {},
+        })
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 ### Example Usage: InspectMultipleResponseExample
 
 <!-- UsageSnippet language="python" operationID="inspectMultiple" method="post" path="/v2/accounts/{account_id}/permissions/principal_roles/inspect" example="InspectMultipleResponseExample" -->
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -407,7 +725,42 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.principals.inspect_multiple(request={
+            "scope_type": cloudinary_account_provisioning.ScopeTypeEnum.PRODENV,
+            "principals": [
+                {
+                    "type": cloudinary_account_provisioning.PrincipalTypeEnum.USER,
+                    "id": "1234abc",
+                },
+            ],
+        })
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Parameters
