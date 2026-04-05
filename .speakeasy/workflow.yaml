@@ -7,6 +7,7 @@ sources:
         overlays:
             - location: .speakeasy/speakeasy-modifications-overlay.yaml
             - location: https://cloudinary.github.io/api-schemas/overlays/security-scheme-account-overlay.yaml
+            - location: https://cloudinary.github.io/api-schemas/permissions/overlays/additional-properties-overlay.yaml
         registry:
             location: registry.speakeasyapi.dev/cloudinary/cloudinary/cloudinary-provisioning
 targets:
