@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 9cab71d3-7587-4451-93d9-e0bf5da18eb5
 management:
-  docChecksum: e920063ab6b20f32bc34845fa67ec4df
+  docChecksum: 6d3050008a4d912a12a94764301c4664
   docVersion: 0.2.1
   speakeasyVersion: 1.761.1
   generationVersion: 2.879.6
-  releaseVersion: 0.1.2
-  configChecksum: 1139c60ef009e65bda19885e23c082f2
+  releaseVersion: 0.1.3
+  configChecksum: b2b020914b5577c135ae160cd6b26fc3
   repoURL: https://github.com/cloudinary/account-provisioning-python.git
   installationURL: https://github.com/cloudinary/account-provisioning-python.git
   published: true
 persistentEdits:
-  generation_id: 6265eb69-4637-47e8-9d77-a9b932da397c
-  pristine_commit_hash: 597f678bd2f7e37c0cfd850c920860efd7f0e330
-  pristine_tree_hash: 60b70879592aeb08c6087089758c16ef23e97589
+  generation_id: 706b1023-c78b-4491-978f-e6a361645dd0
+  pristine_commit_hash: c2d5fd7588034d33e4857e287246083faf89f203
+  pristine_tree_hash: 6b1f48022a7ee07bdf84ccf6f93bc0db0aab244a
 features:
   python:
     additionalDependencies: 1.0.0
@@ -102,18 +102,14 @@ trackedFiles:
     id: 786823ab8ff0
     last_write_checksum: sha1:2a8ca4eb67fbec6edf7edbd7a30a05eb218efa7b
     pristine_git_object: af9c77bf58765f156e522b9e137fc0eb2dcfc99e
-  docs/models/catalog.md:
-    id: 323e2c587025
-    last_write_checksum: sha1:0ae50a451bbd6ccca3c4c74a23fb4d47ef2312a1
-    pristine_git_object: f38fd2448f3aefd6b2a90f5af6722c8f93074c82
   docs/models/cedarerror.md:
     id: 7162019f29fd
     last_write_checksum: sha1:a6adc94ce2bb9571a80bae90a111fda2f6c28b75
     pristine_git_object: aa4effedb8453f525aea273b88c780df72d7a294
   docs/models/cedarschemaresponse.md:
     id: 4a67f0132653
-    last_write_checksum: sha1:75850a5cf413379efdadfda6787ff5d555401763
-    pristine_git_object: ba74e5d44a0be9682e3e1643fcb2190bff3e92ed
+    last_write_checksum: sha1:a3affcf6826d0f9b68dea33d9c7bfecbab70551a
+    pristine_git_object: 804fc3ffd830a2a4d9f6cad62c8bc2d61c8f73a5
   docs/models/cloudassettypebreakdown.md:
     id: f9456540e4a4
     last_write_checksum: sha1:2584d0d1bc8e8a54e6c387b32681ac28de120069
@@ -590,10 +586,6 @@ trackedFiles:
     id: 952df9ec5440
     last_write_checksum: sha1:dcf4377fd52542c7b44bf74f41904a8af354486f
     pristine_git_object: bf6c4c506b3afb8eb8b8fd86f9ef8c3c4c411123
-  docs/models/schema.md:
-    id: 0851b10166f9
-    last_write_checksum: sha1:20588de298d8c99bb67c0ddf33631543b63cd6f7
-    pristine_git_object: e79079fdb9861f24e7aba2b095edd38615cec84c
   docs/models/scopetypeenum.md:
     id: d72284b2b798
     last_write_checksum: sha1:0475cac90b79db70521320d2ff56ac91effacf29
@@ -628,8 +620,8 @@ trackedFiles:
     pristine_git_object: 6ab673d151a6658b383c803a3f36c20caaccc7a4
   docs/models/systemrolesandpoliciescatalogresponse.md:
     id: 0a3c901bfd10
-    last_write_checksum: sha1:0b1c05ad39157be493f3f462c0adeb216fcfa344
-    pristine_git_object: 5cb3a6fb207e2bb89f7f043d31f9b3b8d9346ae6
+    last_write_checksum: sha1:897dad83f40fc527703ff58372c2860231707b68
+    pristine_git_object: a733dfe1828d61e02eb73da1285328d0e6d19e02
   docs/models/uniontype.md:
     id: 24a0467711ce
     last_write_checksum: sha1:8ac6c2903ede7893248a2a20732a2838aee224f2
@@ -828,8 +820,8 @@ trackedFiles:
     pristine_git_object: b41e83b1af81e4f783a4007869370c0d60504b45
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:c004661545bd9a32d85e019340605d785c4fcba2
-    pristine_git_object: 52abacf7d10d88574f077b34f447e0c2bdbb953d
+    last_write_checksum: sha1:b42af78b46081d938546c7f9be3f81e33015fb61
+    pristine_git_object: 0d3d454c49a7616769d870e5bd2daa72961e37ac
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:a5741d35e04ef110fcd07926f8fcfdbf7e61ffb7
@@ -856,8 +848,8 @@ trackedFiles:
     pristine_git_object: 37dc1e0c10cef89a3c7f8218b2cb9694a4944f83
   src/cloudinary_account_provisioning/_version.py:
     id: 76c72d55f9f0
-    last_write_checksum: sha1:dfb1c05ecc17bec488454786b4103f7bfc6ab0c5
-    pristine_git_object: 79fde3d7e0f357ea81215e0aa88502f631ce0128
+    last_write_checksum: sha1:643390780aa46b20a9a142085a9affa2e134b5b9
+    pristine_git_object: b97df51db538b8bfe3f6fe0e51cad74f4fefcd08
   src/cloudinary_account_provisioning/accesskeys.py:
     id: 3d4cc397b561
     last_write_checksum: sha1:4f1a2bfeaf09cc569b33736b0179dfa5c6d51c1b
@@ -884,8 +876,8 @@ trackedFiles:
     pristine_git_object: 45f345376881aa767a21dc98c68650edfa84e75c
   src/cloudinary_account_provisioning/models/__init__.py:
     id: fe2ea833efd6
-    last_write_checksum: sha1:533b4fe9782e8e0697fe637de911bc696895e28c
-    pristine_git_object: b9aec6a63dfed17614a6b7919e710051f8d0a08c
+    last_write_checksum: sha1:d7afb5d025bc6e68369b029e825893d43558511c
+    pristine_git_object: 2c2a410e01c491321c5b1ceb5d440ffbfaddac9d
   src/cloudinary_account_provisioning/models/accesskey.py:
     id: 9b7db1535265
     last_write_checksum: sha1:e558d2329ff2773f4bb48e7d88288372590cee00
@@ -924,8 +916,8 @@ trackedFiles:
     pristine_git_object: 518254a545113dcb0ba3d46c67f52ed3a2f48000
   src/cloudinary_account_provisioning/models/cedarschemaresponse.py:
     id: 272be38376b8
-    last_write_checksum: sha1:d063762f10659df7f32595af284364138d20455c
-    pristine_git_object: 1ff0c0bbe157b80a20a092fb4abffe79c55a7f3f
+    last_write_checksum: sha1:392f55d1238bc497a3ba92632ed1f75b03dc219a
+    pristine_git_object: 3e8cc55356c908a4fed2f1b4810999fe506b0436
   src/cloudinary_account_provisioning/models/cloudassettypebreakdown.py:
     id: 4dfa5d4701f8
     last_write_checksum: sha1:ff84a9c7fbc9e98c1c391cd54fb1fc0eb226d6a9
@@ -1248,8 +1240,8 @@ trackedFiles:
     pristine_git_object: 4197c6866acdcc23e54fc3b25534a7cb4367a962
   src/cloudinary_account_provisioning/models/systemrolesandpoliciescatalogresponse.py:
     id: 73bad937b351
-    last_write_checksum: sha1:8036151028c226f1b6c2e6fffec68172431856f9
-    pristine_git_object: 65f61a1dd50092a6d48f9a5ce6a6a876f4fc2b02
+    last_write_checksum: sha1:882d4305a6533a86294902ceb8029853775af777
+    pristine_git_object: b9838322f29d2f92c1f67b6eae63bfd5dd7deb31
   src/cloudinary_account_provisioning/models/updateaccesskeyop.py:
     id: 27f8551e3a21
     last_write_checksum: sha1:5436be060107808a0f8a6c26f4326be62943b9ef
@@ -2700,3 +2692,7 @@ examples:
           application/json: {"data": {"principals": [{"type": "user", "id": "1234abc", "roles": [{"id": "marketing_content_contributor_1357fhe", "name": "Marketing content contributor", "description": "View all assets in selected folders and contribute to those folders, without permission to download.", "management_type": "custom", "permission_type": "content", "scope_type": "prodenv", "scope_id": "975l29lz02jt0836fhwi", "policy_parameters": {}, "created_at": 1719475215, "updated_at": 1719475215}]}, {"type": "user", "id": "4567xyz", "roles": [{"id": "campaign_organizer_351766dt", "name": "Campaign organizer", "description": "Share and download permissions on folders.", "management_type": "custom", "permission_type": "content", "scope_type": "prodenv", "scope_id": "975l29lz02jt0836fhwi", "policy_parameters": {}, "created_at": 1719475215, "updated_at": 1719475215}, {"id": "cld::role::prodenv::reports", "name": "Reports", "description": "View product environment reports and usage metrics.", "management_type": "system", "permission_type": "global", "scope_type": "prodenv", "scope_id": "975l29lz02jt0836fhwi", "created_at": 1719475216, "updated_at": 1719475216}]}, {"type": "apiKey", "id": "a382ltieo893jhioqpg8urp", "roles": [{"id": "upload_manager_351766dt", "name": "Upload manager", "description": "Responsible for managing upload presets and uploading new assets.", "management_type": "custom", "permission_type": "global", "scope_type": "prodenv", "scope_id": "975l29lz02jt0836fhwi", "created_at": 1719475215, "updated_at": 1719475215}]}]}}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Python SDK Changes:
+  * `cld_provisioning.public.get_catalog()`:  `response.catalog` **Changed** (Breaking ⚠️)
+  * `cld_provisioning.public.get_schema()`:  `response.schema` **Changed** (Breaking ⚠️)

@@ -2,20 +2,13 @@
 
 from __future__ import annotations
 from cloudinary_account_provisioning.types import BaseModel
+from typing import Any, Dict
 from typing_extensions import TypedDict
 
 
-class CatalogTypedDict(TypedDict):
-    pass
-
-
-class Catalog(BaseModel):
-    pass
-
-
 class SystemRolesAndPoliciesCatalogResponseTypedDict(TypedDict):
-    catalog: CatalogTypedDict
+    catalog: Dict[str, Any]
 
 
 class SystemRolesAndPoliciesCatalogResponse(BaseModel):
-    catalog: Catalog
+    catalog: Dict[str, Any]

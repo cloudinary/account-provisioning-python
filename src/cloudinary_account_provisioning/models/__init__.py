@@ -37,12 +37,7 @@ if TYPE_CHECKING:
         MonthlyCyclesTypedDict,
     )
     from .cedarerror import CedarError, CedarErrorTypedDict
-    from .cedarschemaresponse import (
-        CedarSchemaResponse,
-        CedarSchemaResponseTypedDict,
-        Schema,
-        SchemaTypedDict,
-    )
+    from .cedarschemaresponse import CedarSchemaResponse, CedarSchemaResponseTypedDict
     from .cloudassettypebreakdown import (
         CloudAssetTypeBreakdown,
         CloudAssetTypeBreakdownTypedDict,
@@ -369,8 +364,6 @@ if TYPE_CHECKING:
         SystemPolicyResponseDataTypedDict,
     )
     from .systemrolesandpoliciescatalogresponse import (
-        Catalog,
-        CatalogTypedDict,
         SystemRolesAndPoliciesCatalogResponse,
         SystemRolesAndPoliciesCatalogResponseTypedDict,
     )
@@ -487,8 +480,6 @@ __all__ = [
     "BillingUsageResponseTypedDict",
     "Breakdown",
     "BreakdownTypedDict",
-    "Catalog",
-    "CatalogTypedDict",
     "CedarError",
     "CedarErrorTypedDict",
     "CedarSchemaResponse",
@@ -724,8 +715,6 @@ __all__ = [
     "RoleTypedDict",
     "RolesResponse",
     "RolesResponseTypedDict",
-    "Schema",
-    "SchemaTypedDict",
     "ScopeTypeEnum",
     "Security",
     "SecurityTypedDict",
@@ -844,8 +833,6 @@ _dynamic_imports: dict[str, str] = {
     "CedarErrorTypedDict": ".cedarerror",
     "CedarSchemaResponse": ".cedarschemaresponse",
     "CedarSchemaResponseTypedDict": ".cedarschemaresponse",
-    "Schema": ".cedarschemaresponse",
-    "SchemaTypedDict": ".cedarschemaresponse",
     "CloudAssetTypeBreakdown": ".cloudassettypebreakdown",
     "CloudAssetTypeBreakdownTypedDict": ".cloudassettypebreakdown",
     "CreateCustomPolicyGlobals": ".createcustompolicyop",
@@ -1081,8 +1068,6 @@ _dynamic_imports: dict[str, str] = {
     "SystemPoliciesResponseTypedDict": ".systempoliciesresponse",
     "SystemPolicyResponseData": ".systempolicyresponsedata",
     "SystemPolicyResponseDataTypedDict": ".systempolicyresponsedata",
-    "Catalog": ".systemrolesandpoliciescatalogresponse",
-    "CatalogTypedDict": ".systemrolesandpoliciescatalogresponse",
     "SystemRolesAndPoliciesCatalogResponse": ".systemrolesandpoliciescatalogresponse",
     "SystemRolesAndPoliciesCatalogResponseTypedDict": ".systemrolesandpoliciescatalogresponse",
     "UpdateAccessKeyGlobals": ".updateaccesskeyop",

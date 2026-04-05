@@ -2,8 +2,8 @@ speakeasyVersion: 1.761.1
 sources:
     Cloudinary-Provisioning-OAS:
         sourceNamespace: cloudinary-provisioning
-        sourceRevisionDigest: sha256:2eb14e9aa6662f5f4f1d9ef1039678b31573aebc5765ea3e64a4d2017f9073d4
-        sourceBlobDigest: sha256:0c58d072e0b61c934870ce292789dd513ea1df64ec9a625f3e428fc17fcf2574
+        sourceRevisionDigest: sha256:e2fd5f6aa6b9fa1e5db8e0b8730ab4ba03eab339533987917f9fcd1b17b98d27
+        sourceBlobDigest: sha256:ab6edeae93ec2d1ec61d5a5e88231cc8c57e93b249c107c193b82f7f750f8808
         tags:
             - latest
             - 0.2.1
@@ -11,10 +11,10 @@ targets:
     cloudinary:
         source: Cloudinary-Provisioning-OAS
         sourceNamespace: cloudinary-provisioning
-        sourceRevisionDigest: sha256:2eb14e9aa6662f5f4f1d9ef1039678b31573aebc5765ea3e64a4d2017f9073d4
-        sourceBlobDigest: sha256:0c58d072e0b61c934870ce292789dd513ea1df64ec9a625f3e428fc17fcf2574
+        sourceRevisionDigest: sha256:e2fd5f6aa6b9fa1e5db8e0b8730ab4ba03eab339533987917f9fcd1b17b98d27
+        sourceBlobDigest: sha256:ab6edeae93ec2d1ec61d5a5e88231cc8c57e93b249c107c193b82f7f750f8808
         codeSamplesNamespace: cloudinary-provisioning-python-code-samples
-        codeSamplesRevisionDigest: sha256:a40d135fa31b4070deb14b6fda8fc756589bf7c86615c2f08dfdd950ab50f38c
+        codeSamplesRevisionDigest: sha256:02e688ff9ff6047addf90dcc259dbc1fc484a1498922867379eaa7d852b0171a
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -25,6 +25,7 @@ workflow:
             overlays:
                 - location: .speakeasy/speakeasy-modifications-overlay.yaml
                 - location: https://cloudinary.github.io/api-schemas/overlays/security-scheme-account-overlay.yaml
+                - location: https://cloudinary.github.io/api-schemas/permissions/overlays/additional-properties-overlay.yaml
             registry:
                 location: registry.speakeasyapi.dev/cloudinary/cloudinary/cloudinary-provisioning
     targets:
@@ -32,7 +33,8 @@ workflow:
             target: python
             source: Cloudinary-Provisioning-OAS
             publish:
-                pypi: {}
+                pypi:
+                    token: $pypi_token
             codeSamples:
                 registry:
                     location: registry.speakeasyapi.dev/cloudinary/cloudinary/cloudinary-provisioning-python-code-samples
