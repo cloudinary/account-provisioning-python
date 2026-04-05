@@ -3,23 +3,16 @@
 from __future__ import annotations
 from cloudinary_account_provisioning.types import BaseModel
 import pydantic
+from typing import Any, Dict
 from typing_extensions import Annotated, TypedDict
 
 
-class SchemaTypedDict(TypedDict):
-    pass
-
-
-class Schema(BaseModel):
-    pass
-
-
 class CedarSchemaResponseTypedDict(TypedDict):
-    schema_: SchemaTypedDict
+    schema_: Dict[str, Any]
 
 
 class CedarSchemaResponse(BaseModel):
-    schema_: Annotated[Schema, pydantic.Field(alias="schema")]
+    schema_: Annotated[Dict[str, Any], pydantic.Field(alias="schema")]
 
 
 try:
