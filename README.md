@@ -1,5 +1,9 @@
 # Cloudinary Account Provisioning Python SDK
 
+[![PyPI Version](https://img.shields.io/pypi/v/cloudinary-account-provisioning.svg)](https://pypi.python.org/pypi/cloudinary-account-provisioning/)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/cloudinary-account-provisioning.svg)](https://pypi.python.org/pypi/cloudinary-account-provisioning/)
+[![License](https://img.shields.io/github/license/cloudinary/account-provisioning-python.svg)](https://github.com/cloudinary/account-provisioning-python/blob/main/LICENSE)
+
 Developer-friendly & type-safe Python SDK specifically catered to leverage *cloudinary-account-provisioning* API.
 
 <!-- Start Summary [summary] -->
