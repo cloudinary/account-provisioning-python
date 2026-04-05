@@ -2,6 +2,14 @@
 
 The role to assign.
 
+## Example Usage
+
+```python
+from cloudinary_account_provisioning.models import CreateUserRole
+
+value = CreateUserRole.MASTER_ADMIN
+```
+
 
 ## Values
 

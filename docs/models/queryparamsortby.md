@@ -1,5 +1,13 @@
 # QueryParamSortBy
 
+## Example Usage
+
+```python
+from cloudinary_account_provisioning.models import QueryParamSortBy
+
+value = QueryParamSortBy.NAME
+```
+
 
 ## Values
 

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .scopetypeenum import ScopeTypeEnum
+from cloudinary_account_provisioning import models
 from cloudinary_account_provisioning.types import (
     BaseModel,
     Nullable,
@@ -9,7 +10,7 @@ from cloudinary_account_provisioning.types import (
     UNSET,
     UNSET_SENTINEL,
 )
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -57,6 +58,15 @@ class CustomPolicy(BaseModel):
     enabled: OptionalNullable[bool] = True
     r"""Indicates whether the policy is currently active. Can be \"true\" (enabled) or \"false\" (disabled)."""
 
+    @field_serializer("scope_type")
+    def serialize_scope_type(self, value):
+        if isinstance(value, str):
+            try:
+                return models.ScopeTypeEnum(value)
+            except ValueError:
+                return value
+        return value
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(["description", "scope_id", "enabled"])
@@ -66,7 +76,7 @@ class CustomPolicy(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member

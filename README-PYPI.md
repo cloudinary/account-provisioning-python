@@ -51,10 +51,12 @@ _Thank you for exploring this early release and helping us shape these tools to 
   * [Global Parameters](https://github.com/cloudinary/account-provisioning-python/blob/master/#global-parameters)
   * [Retries](https://github.com/cloudinary/account-provisioning-python/blob/master/#retries)
   * [Error Handling](https://github.com/cloudinary/account-provisioning-python/blob/master/#error-handling)
-  * [Server Selection](https://github.com/cloudinary/account-provisioning-python/blob/master/#server-selection)
-  * [Custom HTTP Client](https://github.com/cloudinary/account-provisioning-python/blob/master/#custom-http-client)
-  * [Resource Management](https://github.com/cloudinary/account-provisioning-python/blob/master/#resource-management)
-  * [Debugging](https://github.com/cloudinary/account-provisioning-python/blob/master/#debugging)
+* [Asynchronous Example](https://github.com/cloudinary/account-provisioning-python/blob/master/#asynchronous-example)
+* [Synchronous Example](https://github.com/cloudinary/account-provisioning-python/blob/master/#synchronous-example)
+* [Asynchronous Example](https://github.com/cloudinary/account-provisioning-python/blob/master/#asynchronous-example-1)
+* [Synchronous Example](https://github.com/cloudinary/account-provisioning-python/blob/master/#synchronous-example-1)
+* [Asynchronous Example](https://github.com/cloudinary/account-provisioning-python/blob/master/#asynchronous-example-2)
+* [Or when using async:](https://github.com/cloudinary/account-provisioning-python/blob/master/#or-when-using-async)
 * [Development](https://github.com/cloudinary/account-provisioning-python/blob/master/#development)
   * [Maturity](https://github.com/cloudinary/account-provisioning-python/blob/master/#maturity)
   * [Contributions](https://github.com/cloudinary/account-provisioning-python/blob/master/#contributions)
@@ -168,17 +170,17 @@ with CldProvisioning(
 
 </br>
 
-The same SDK client can also be used to make asynchronous requests by importing asyncio.
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
 
 ```python
 # Asynchronous Example
 import asyncio
 import cloudinary_account_provisioning
-from cloudinary_account_provisioning import CldProvisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
 
 async def main():
 
-    async with CldProvisioning(
+    async with AsyncCldProvisioning(
         account_id="<id>",
         security=cloudinary_account_provisioning.Security(
             provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
@@ -186,7 +188,7 @@ async def main():
         ),
     ) as cld_provisioning:
 
-        res = await cld_provisioning.product_environments.list_async(enabled=True, prefix="product")
+        res = await cld_provisioning.product_environments.list(enabled=True, prefix="product")
 
         # Handle response
         print(res)
@@ -208,6 +210,7 @@ This SDK supports the following security scheme globally:
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -224,7 +227,34 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+        account_id="<id>",
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.product_environments.list(enabled=True, prefix="product")
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 <!-- End Authentication [security] -->
 
@@ -337,6 +367,7 @@ Global parameters can also be set via environment variable.
 ### Example
 
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -353,7 +384,34 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.product_environments.list(enabled=True, prefix="product")
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 <!-- End Global Parameters [global-parameters] -->
 
@@ -364,6 +422,7 @@ Some of the endpoints in this SDK support retries. If you use the SDK without an
 
 To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 from cloudinary_account_provisioning.utils import BackoffStrategy, RetryConfig
@@ -382,11 +441,41 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+from cloudinary_account_provisioning.utils import BackoffStrategy, RetryConfig
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.product_environments.list(enabled=True, prefix="product",
+            RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 from cloudinary_account_provisioning.utils import BackoffStrategy, RetryConfig
@@ -405,7 +494,36 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+from cloudinary_account_provisioning.utils import BackoffStrategy, RetryConfig
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.product_environments.list(enabled=True, prefix="product")
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 <!-- End Retries [retries] -->
 
@@ -425,6 +543,7 @@ with CldProvisioning(
 
 ### Example
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning, models
 
@@ -455,7 +574,49 @@ with CldProvisioning(
 
         # Depending on the method different errors may be thrown
         if isinstance(e, models.ErrorResponse):
-            print(e.data.error)  # Optional[cloudinary_account_provisioning.Error]
+            print(e.data.error)  # Optional[cloudinary_account_provisioning.Error]```
+
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning, models
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+        res = None
+        try:
+
+            res = await cld_provisioning.product_environments.list(enabled=True, prefix="product")
+
+            # Handle response
+            print(res)
+
+
+            except models.CloudinaryError as e:
+                # The base class for HTTP error responses
+                print(e.message)
+                print(e.status_code)
+                print(e.body)
+                print(e.headers)
+                print(e.raw_response)
+
+                # Depending on the method different errors may be thrown
+                if isinstance(e, models.ErrorResponse):
+                    print(e.data.error)  # Optional[cloudinary_account_provisioning.Error]
+
+asyncio.run(main())
 ```
 
 ### Error Classes
@@ -504,6 +665,7 @@ If the selected server has variables, you may override its default values throug
 #### Example
 
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -522,13 +684,43 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        server_idx=0,
+        region="api-ap",
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.product_environments.list(enabled=True, prefix="product")
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 
 ### Override Server URL Per-Client
 
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
+# Synchronous Example
 import cloudinary_account_provisioning
 from cloudinary_account_provisioning import CldProvisioning
 
@@ -546,7 +738,35 @@ with CldProvisioning(
 
     # Handle response
     print(res)
+```
 
+</br>
+
+An Async SDK client can also be used to make asynchronous requests by importing it and asyncio.
+
+```python
+# Asynchronous Example
+import asyncio
+import cloudinary_account_provisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning
+
+async def main():
+
+    async with AsyncCldProvisioning(
+        server_url="https://api.cloudinary.com",
+        account_id="<id>",
+        security=cloudinary_account_provisioning.Security(
+            provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",
+            provisioning_api_secret="CLOUDINARY_PROVISIONING_API_SECRET",
+        ),
+    ) as cld_provisioning:
+
+        res = await cld_provisioning.product_environments.list(enabled=True, prefix="product")
+
+        # Handle response
+        print(res)
+
+asyncio.run(main())
 ```
 <!-- End Server Selection [server] -->
 
@@ -634,13 +854,13 @@ s = CldProvisioning(async_client=CustomClient(httpx.AsyncClient()))
 <!-- Start Resource Management [resource-management] -->
 ## Resource Management
 
-The `CldProvisioning` class implements the context manager protocol and registers a finalizer function to close the underlying sync and async HTTPX clients it uses under the hood. This will close HTTP connections, release memory and free up other resources held by the SDK. In short-lived Python programs and notebooks that make a few SDK method calls, resource management may not be a concern. However, in longer-lived programs, it is beneficial to create a single SDK instance via a [context manager][context-manager] and reuse it across the application.
+The `CldProvisioning` and `AsyncCldProvisioning` classes implement the context manager protocol and register finalizer functions to close the underlying HTTPX clients they use under the hood. This will close HTTP connections, release memory and free up other resources held by the SDKs. In short-lived Python programs and notebooks that make a few SDK method calls, resource management may not be a concern. However, in longer-lived programs, it is beneficial to create SDK instances via [context managers][context-manager] and reuse them across the application.
 
 [context-manager]: https://docs.python.org/3/reference/datamodel.html#context-managers
 
 ```python
 import cloudinary_account_provisioning
-from cloudinary_account_provisioning import CldProvisioning
+from cloudinary_account_provisioning import AsyncCldProvisioning, CldProvisioning
 def main():
 
     with CldProvisioning(
@@ -656,7 +876,7 @@ def main():
 # Or when using async:
 async def amain():
 
-    async with CldProvisioning(
+    async with AsyncCldProvisioning(
         account_id="<id>",
         security=cloudinary_account_provisioning.Security(
             provisioning_api_key="CLOUDINARY_PROVISIONING_API_KEY",

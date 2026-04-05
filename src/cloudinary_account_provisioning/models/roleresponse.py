@@ -7,6 +7,7 @@ from .systempolicyresponsedata import (
     SystemPolicyResponseData,
     SystemPolicyResponseDataTypedDict,
 )
+from cloudinary_account_provisioning import models
 from cloudinary_account_provisioning.types import (
     BaseModel,
     Nullable,
@@ -14,7 +15,7 @@ from cloudinary_account_provisioning.types import (
     UNSET,
     UNSET_SENTINEL,
 )
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -91,6 +92,24 @@ class RoleResponseData1(BaseModel):
 
     """
 
+    @field_serializer("management_type")
+    def serialize_management_type(self, value):
+        if isinstance(value, str):
+            try:
+                return models.ManagementTypeEnum(value)
+            except ValueError:
+                return value
+        return value
+
+    @field_serializer("scope_type")
+    def serialize_scope_type(self, value):
+        if isinstance(value, str):
+            try:
+                return models.ScopeTypeEnum(value)
+            except ValueError:
+                return value
+        return value
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(["policies", "description", "policy_parameters"])
@@ -100,7 +119,7 @@ class RoleResponseData1(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
@@ -132,7 +151,7 @@ class RoleResponse(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 if val is not None or k not in optional_fields:

@@ -1,6 +1,6 @@
 [project]
 name = "cloudinary-account-provisioning"
-version = "0.1.1"
+version = "0.1.2"
 description = "Cloudinary Account Provisioning Python SDK."
 authors = [{ name = "Cloudinary" },{ name = "Speakeasy" },]
 readme = "README-PYPI.md"

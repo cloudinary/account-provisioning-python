@@ -4,6 +4,14 @@ Designates the access key for a specific purpose while allowing it to be used fo
 This action replaces any previously assigned key. **Possible values**: `webhooks`
 
 
+## Example Usage
+
+```python
+from cloudinary_account_provisioning.models import DedicatedFor
+
+value = DedicatedFor.WEBHOOKS
+```
+
 
 ## Values
 
