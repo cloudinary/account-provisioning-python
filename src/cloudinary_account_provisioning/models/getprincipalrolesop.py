@@ -6,7 +6,12 @@ from .permissiontypeenum import PermissionTypeEnum
 from .principaltypeenum import PrincipalTypeEnum
 from .scopetypeenum import ScopeTypeEnum
 from cloudinary_account_provisioning import models
-from cloudinary_account_provisioning.types import BaseModel, UNSET_SENTINEL
+from cloudinary_account_provisioning.types import (
+    BaseModel,
+    UNSET_SENTINEL,
+    current_exclude_none,
+    serialize_with_info,
+)
 from cloudinary_account_provisioning.utils import (
     FieldMetadata,
     PathParamMetadata,
@@ -30,13 +35,19 @@ class GetPrincipalRolesGlobals(BaseModel):
     r"""Account ID"""
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(["account_id"])
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
@@ -206,6 +217,9 @@ class GetPrincipalRolesRequest(BaseModel):
         return value
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(
             [
@@ -219,11 +233,14 @@ class GetPrincipalRolesRequest(BaseModel):
                 "param_value",
             ]
         )
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:

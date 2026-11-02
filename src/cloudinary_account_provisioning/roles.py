@@ -8,7 +8,7 @@ from cloudinary_account_provisioning.utils import get_security_from_env
 from cloudinary_account_provisioning.utils.unmarshal_json_response import (
     unmarshal_json_response,
 )
-from typing import Any, List, Mapping, Optional, Union, cast
+from typing import Any, Iterable, List, Mapping, Optional, Union, cast
 
 
 class Roles(BaseSDK):
@@ -26,7 +26,7 @@ class Roles(BaseSDK):
         permission_type: models.PermissionTypeEnum,
         scope_type: Optional[models.ScopeTypeEnum] = None,
         management_type: Optional[models.ManagementTypeEnum] = None,
-        policy_parameters: Optional[List[str]] = None,
+        policy_parameters: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -63,7 +63,7 @@ class Roles(BaseSDK):
             scope_type=scope_type,
             permission_type=permission_type,
             management_type=management_type,
-            policy_parameters=policy_parameters,
+            policy_parameters=utils.unmarshal(policy_parameters, Optional[List[str]]),
         )
 
         req = self._build_request(
@@ -103,9 +103,11 @@ class Roles(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Roles"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "500", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -204,9 +206,11 @@ class Roles(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Roles"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "403", "409", "4XX", "500", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -304,9 +308,11 @@ class Roles(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Roles"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -331,7 +337,7 @@ class Roles(BaseSDK):
         self,
         *,
         role_id: str,
-        role: Union[models.Role, models.RoleTypedDict],
+        update_role: Union[models.UpdateRole, models.UpdateRoleTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -345,7 +351,7 @@ class Roles(BaseSDK):
 
 
         :param role_id: A unique identifier for the role.
-        :param role: Role details
+        :param update_role: Role details
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -363,7 +369,7 @@ class Roles(BaseSDK):
 
         request = models.UpdateRoleRequest(
             role_id=role_id,
-            role=utils.get_pydantic_model(role, models.Role),
+            update_role=utils.get_pydantic_model(update_role, models.UpdateRole),
         )
 
         req = self._build_request(
@@ -383,7 +389,7 @@ class Roles(BaseSDK):
             ),
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.role, False, False, "json", models.Role
+                request.update_role, False, False, "json", models.UpdateRole
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -406,9 +412,11 @@ class Roles(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Roles"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "403", "404", "409", "4XX", "500", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -512,9 +520,11 @@ class Roles(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Roles"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -607,9 +617,11 @@ class Roles(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Roles"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -715,9 +727,11 @@ class Roles(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Roles"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "403", "404", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -756,7 +770,7 @@ class AsyncRoles(AsyncBaseSDK):
         permission_type: models.PermissionTypeEnum,
         scope_type: Optional[models.ScopeTypeEnum] = None,
         management_type: Optional[models.ManagementTypeEnum] = None,
-        policy_parameters: Optional[List[str]] = None,
+        policy_parameters: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -793,7 +807,7 @@ class AsyncRoles(AsyncBaseSDK):
             scope_type=scope_type,
             permission_type=permission_type,
             management_type=management_type,
-            policy_parameters=policy_parameters,
+            policy_parameters=utils.unmarshal(policy_parameters, Optional[List[str]]),
         )
 
         req = self._build_request_async(
@@ -833,9 +847,11 @@ class AsyncRoles(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Roles"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "500", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -934,9 +950,11 @@ class AsyncRoles(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Roles"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "403", "409", "4XX", "500", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -1034,9 +1052,11 @@ class AsyncRoles(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Roles"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -1061,7 +1081,7 @@ class AsyncRoles(AsyncBaseSDK):
         self,
         *,
         role_id: str,
-        role: Union[models.Role, models.RoleTypedDict],
+        update_role: Union[models.UpdateRole, models.UpdateRoleTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1075,7 +1095,7 @@ class AsyncRoles(AsyncBaseSDK):
 
 
         :param role_id: A unique identifier for the role.
-        :param role: Role details
+        :param update_role: Role details
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1093,7 +1113,7 @@ class AsyncRoles(AsyncBaseSDK):
 
         request = models.UpdateRoleRequest(
             role_id=role_id,
-            role=utils.get_pydantic_model(role, models.Role),
+            update_role=utils.get_pydantic_model(update_role, models.UpdateRole),
         )
 
         req = self._build_request_async(
@@ -1113,7 +1133,7 @@ class AsyncRoles(AsyncBaseSDK):
             ),
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.role, False, False, "json", models.Role
+                request.update_role, False, False, "json", models.UpdateRole
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -1136,9 +1156,11 @@ class AsyncRoles(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Roles"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "403", "404", "409", "4XX", "500", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -1242,9 +1264,11 @@ class AsyncRoles(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Roles"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -1337,9 +1361,11 @@ class AsyncRoles(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Roles"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -1445,9 +1471,11 @@ class AsyncRoles(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Roles"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "403", "404", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 

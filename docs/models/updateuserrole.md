@@ -1,13 +1,15 @@
-# UserRequestRole
+# ~~UpdateUserRole~~
 
-The role to assign.
+The legacy role to assign. Deprecated: use `roles` (create) or `role_management` (update) instead. Can't be combined with `roles` or `role_management`.
+
+> :warning: **DEPRECATED**: Use `roles` (create) or `role_management` (update) instead..
 
 ## Example Usage
 
 ```python
-from cloudinary_account_provisioning.models import UserRequestRole
+from cloudinary_account_provisioning.models import UpdateUserRole
 
-value = UserRequestRole.MASTER_ADMIN
+value = UpdateUserRole.MASTER_ADMIN
 ```
 
 

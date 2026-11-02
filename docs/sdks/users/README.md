@@ -134,7 +134,7 @@ with CldProvisioning(
     res = cld_provisioning.users.create(request={
         "name": "jenny_bar",
         "email": "jenny_bar@example.com",
-        "role": cloudinary_account_provisioning.CreateUserRole.MASTER_ADMIN,
+        "role": cloudinary_account_provisioning.Role.MASTER_ADMIN,
     })
 
     # Handle response
@@ -164,7 +164,7 @@ async def main():
         res = await cld_provisioning.users.create(request={
             "name": "jenny_bar",
             "email": "jenny_bar@example.com",
-            "role": cloudinary_account_provisioning.CreateUserRole.MASTER_ADMIN,
+            "role": cloudinary_account_provisioning.Role.MASTER_ADMIN,
         })
 
         # Handle response
@@ -192,8 +192,12 @@ with CldProvisioning(
     res = cld_provisioning.users.create(request={
         "name": "John",
         "email": "john@example.com",
-        "role": cloudinary_account_provisioning.CreateUserRole.TECHNICAL_ADMIN,
         "enabled": True,
+        "roles": [
+            cloudinary_account_provisioning.RoleAssignment(
+                id="media_library_admin",
+            ),
+        ],
     })
 
     # Handle response
@@ -223,8 +227,12 @@ async def main():
         res = await cld_provisioning.users.create(request={
             "name": "John",
             "email": "john@example.com",
-            "role": cloudinary_account_provisioning.CreateUserRole.TECHNICAL_ADMIN,
             "enabled": True,
+            "roles": [
+                cloudinary_account_provisioning.RoleAssignment(
+                    id="media_library_admin",
+                ),
+            ],
         })
 
         # Handle response
@@ -351,11 +359,14 @@ with CldProvisioning(
     ),
 ) as cld_provisioning:
 
-    res = cld_provisioning.users.update(user_id="0abed8dfcc039ea05e2a1d494fd442", user_request={
+    res = cld_provisioning.users.update(user_id="0abed8dfcc039ea05e2a1d494fd442", request_body={
         "name": "John",
         "email": "john@example.com",
-        "role": cloudinary_account_provisioning.UserRequestRole.TECHNICAL_ADMIN,
         "enabled": True,
+        "role_management": {
+            "operation": cloudinary_account_provisioning.Operation.ADD,
+            "roles": [],
+        },
     })
 
     # Handle response
@@ -382,11 +393,14 @@ async def main():
         ),
     ) as cld_provisioning:
 
-        res = await cld_provisioning.users.update(user_id="0abed8dfcc039ea05e2a1d494fd442", user_request={
+        res = await cld_provisioning.users.update(user_id="0abed8dfcc039ea05e2a1d494fd442", request_body={
             "name": "John",
             "email": "john@example.com",
-            "role": cloudinary_account_provisioning.UserRequestRole.TECHNICAL_ADMIN,
             "enabled": True,
+            "role_management": {
+                "operation": cloudinary_account_provisioning.Operation.ADD,
+                "roles": [],
+            },
         })
 
         # Handle response
@@ -397,11 +411,11 @@ asyncio.run(main())
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `user_id`                                                           | *str*                                                               | :heavy_check_mark:                                                  | The ID of the user.                                                 | 0abed8dfcc039ea05e2a1d494fd442                                      |
-| `user_request`                                                      | [models.UserRequest](../../models/userrequest.md)                   | :heavy_check_mark:                                                  | User details to update.                                             |                                                                     |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `user_id`                                                             | *str*                                                                 | :heavy_check_mark:                                                    | The ID of the user.                                                   | 0abed8dfcc039ea05e2a1d494fd442                                        |
+| `request_body`                                                        | [models.UpdateUserRequestBody](../../models/updateuserrequestbody.md) | :heavy_check_mark:                                                    | User details to update.                                               |                                                                       |
+| `retries`                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)      | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
 
 ### Response
 

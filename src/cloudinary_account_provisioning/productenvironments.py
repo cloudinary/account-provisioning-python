@@ -8,7 +8,7 @@ from cloudinary_account_provisioning.utils import get_security_from_env
 from cloudinary_account_provisioning.utils.unmarshal_json_response import (
     unmarshal_json_response,
 )
-from typing import Any, List, Mapping, Optional, Union, cast
+from typing import Any, Iterable, List, Mapping, Optional, Union, cast
 
 
 class ProductEnvironments(BaseSDK):
@@ -16,8 +16,8 @@ class ProductEnvironments(BaseSDK):
         self,
         *,
         enabled: Optional[bool] = None,
-        ids: Optional[List[str]] = None,
-        cloud_names: Optional[List[str]] = None,
+        ids: Optional[Iterable[str]] = None,
+        cloud_names: Optional[Iterable[str]] = None,
         prefix: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -54,8 +54,8 @@ class ProductEnvironments(BaseSDK):
 
         request = models.GetProductEnvironmentsRequest(
             enabled=enabled,
-            ids=ids,
-            cloud_names=cloud_names,
+            ids=utils.unmarshal(ids, Optional[List[str]]),
+            cloud_names=utils.unmarshal(cloud_names, Optional[List[str]]),
             prefix=prefix,
         )
 
@@ -96,19 +96,11 @@ class ProductEnvironments(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Product Environments"],
+                extensions={"x-cld-use-for-readme": True},
             ),
             request=req,
-            error_status_codes=[
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "420",
-                "429",
-                "4XX",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -209,9 +201,11 @@ class ProductEnvironments(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Product Environments"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "403", "409", "420", "429", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -303,9 +297,11 @@ class ProductEnvironments(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Product Environments"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "404", "420", "429", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -413,19 +409,11 @@ class ProductEnvironments(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Product Environments"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=[
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "420",
-                "429",
-                "4XX",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -519,9 +507,11 @@ class ProductEnvironments(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Product Environments"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "403", "404", "420", "429", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -548,8 +538,8 @@ class AsyncProductEnvironments(AsyncBaseSDK):
         self,
         *,
         enabled: Optional[bool] = None,
-        ids: Optional[List[str]] = None,
-        cloud_names: Optional[List[str]] = None,
+        ids: Optional[Iterable[str]] = None,
+        cloud_names: Optional[Iterable[str]] = None,
         prefix: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -586,8 +576,8 @@ class AsyncProductEnvironments(AsyncBaseSDK):
 
         request = models.GetProductEnvironmentsRequest(
             enabled=enabled,
-            ids=ids,
-            cloud_names=cloud_names,
+            ids=utils.unmarshal(ids, Optional[List[str]]),
+            cloud_names=utils.unmarshal(cloud_names, Optional[List[str]]),
             prefix=prefix,
         )
 
@@ -628,19 +618,11 @@ class AsyncProductEnvironments(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Product Environments"],
+                extensions={"x-cld-use-for-readme": True},
             ),
             request=req,
-            error_status_codes=[
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "420",
-                "429",
-                "4XX",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -741,9 +723,11 @@ class AsyncProductEnvironments(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Product Environments"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "403", "409", "420", "429", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -835,9 +819,11 @@ class AsyncProductEnvironments(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Product Environments"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "404", "420", "429", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -945,19 +931,11 @@ class AsyncProductEnvironments(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Product Environments"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=[
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "420",
-                "429",
-                "4XX",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -1051,9 +1029,11 @@ class AsyncProductEnvironments(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Product Environments"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "403", "404", "420", "429", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 

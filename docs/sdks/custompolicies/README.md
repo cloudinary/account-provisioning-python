@@ -415,7 +415,7 @@ asyncio.run(main())
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `request`                                                           | [models.CustomPolicy](../../models/custompolicy.md)                 | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `request`                                                           | [models.CreateCustomPolicy](../../models/createcustompolicy.md)     | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response

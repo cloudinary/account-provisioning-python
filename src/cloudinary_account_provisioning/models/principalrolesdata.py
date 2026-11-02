@@ -11,25 +11,12 @@ from cloudinary_account_provisioning.types import (
     OptionalNullable,
     UNSET,
     UNSET_SENTINEL,
+    current_exclude_none,
+    serialize_with_info,
 )
 from pydantic import field_serializer, model_serializer
+from typing import Any, Dict
 from typing_extensions import NotRequired, TypedDict
-
-
-class PolicyParametersTypedDict(TypedDict):
-    r"""For roles with `permission_type` set to `content`, this defines the type of content the role's policies apply to:
-    - The content type can be: `folder_id` or `collection_id`.
-    - When assigning the role, provide the instance, e.g. `{\"folder_id\":\"asdfjkl12347890\"}`. This specification is passed to the `policy_statement` (Cedar).
-
-    """
-
-
-class PolicyParameters(BaseModel):
-    r"""For roles with `permission_type` set to `content`, this defines the type of content the role's policies apply to:
-    - The content type can be: `folder_id` or `collection_id`.
-    - When assigning the role, provide the instance, e.g. `{\"folder_id\":\"asdfjkl12347890\"}`. This specification is passed to the `policy_statement` (Cedar).
-
-    """
 
 
 class PrincipalRolesDataTypedDict(TypedDict):
@@ -51,7 +38,7 @@ class PrincipalRolesDataTypedDict(TypedDict):
     r"""A short description of the role."""
     scope_id: NotRequired[Nullable[str]]
     r"""Returned only if the scope type is product environment. Can be \"all\" to represent all product environments or an ID of a specific product environment."""
-    policy_parameters: NotRequired[Nullable[PolicyParametersTypedDict]]
+    policy_parameters: NotRequired[Nullable[Dict[str, Any]]]
     r"""For roles with `permission_type` set to `content`, this defines the type of content the role's policies apply to:
     - The content type can be: `folder_id` or `collection_id`.
     - When assigning the role, provide the instance, e.g. `{\"folder_id\":\"asdfjkl12347890\"}`. This specification is passed to the `policy_statement` (Cedar).
@@ -87,7 +74,7 @@ class PrincipalRolesData(BaseModel):
     scope_id: OptionalNullable[str] = UNSET
     r"""Returned only if the scope type is product environment. Can be \"all\" to represent all product environments or an ID of a specific product environment."""
 
-    policy_parameters: OptionalNullable[PolicyParameters] = UNSET
+    policy_parameters: OptionalNullable[Dict[str, Any]] = UNSET
     r"""For roles with `permission_type` set to `content`, this defines the type of content the role's policies apply to:
     - The content type can be: `folder_id` or `collection_id`.
     - When assigning the role, provide the instance, e.g. `{\"folder_id\":\"asdfjkl12347890\"}`. This specification is passed to the `policy_statement` (Cedar).
@@ -122,14 +109,20 @@ class PrincipalRolesData(BaseModel):
         return value
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(["description", "scope_id", "policy_parameters"])
         nullable_fields = set(["description", "scope_id", "policy_parameters"])
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields

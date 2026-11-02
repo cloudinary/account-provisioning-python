@@ -215,7 +215,9 @@ with CldProvisioning(
             {
                 "id": "marketing_content_contributor_1357fhe",
                 "scope_id": "975l29lz02jt0836fhwi",
-                "policy_parameters": {},
+                "policy_parameters": {
+
+                },
             },
         ],
     })
@@ -253,7 +255,9 @@ async def main():
                 {
                     "id": "marketing_content_contributor_1357fhe",
                     "scope_id": "975l29lz02jt0836fhwi",
-                    "policy_parameters": {},
+                    "policy_parameters": {
+
+                    },
                 },
             ],
         })
@@ -289,7 +293,9 @@ with CldProvisioning(
             {
                 "id": "marketing_content_contributor_1357fhe",
                 "scope_id": "975l29lz02jt0836fhwi",
-                "policy_parameters": {},
+                "policy_parameters": {
+
+                },
             },
         ],
     })
@@ -327,7 +333,9 @@ async def main():
                 {
                     "id": "marketing_content_contributor_1357fhe",
                     "scope_id": "975l29lz02jt0836fhwi",
-                    "policy_parameters": {},
+                    "policy_parameters": {
+
+                    },
                 },
             ],
         })
@@ -644,7 +652,9 @@ with CldProvisioning(
                 "id": "a382ltieo893jhioqpg8urp",
             },
         ],
-        "policy_parameters": {},
+        "policy_parameters": {
+            "folder_id": "asdfjkl12347890",
+        },
     })
 
     # Handle response
@@ -688,7 +698,9 @@ async def main():
                     "id": "a382ltieo893jhioqpg8urp",
                 },
             ],
-            "policy_parameters": {},
+            "policy_parameters": {
+                "folder_id": "asdfjkl12347890",
+            },
         })
 
         # Handle response

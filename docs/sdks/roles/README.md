@@ -4,7 +4,7 @@
 
 All roles include one or more predefined **system policies**, and can be applied to principals to enforce these policies.
 
-You can **manage custom roles**, where you select the system policies.
+You can **manage custom roles**, where you select the system policies. 
 
 You can **view system roles**, which contain a fixed set of system policies and are provided by Cloudinary.
 
@@ -794,7 +794,7 @@ with CldProvisioning(
     ),
 ) as cld_provisioning:
 
-    res = cld_provisioning.roles.update(role_id="<id>", role={
+    res = cld_provisioning.roles.update(role_id="<id>", update_role={
         "name": "Upload manager",
         "description": "Responsible for managing upload presets and uploading new assets.",
         "system_policy_ids": [
@@ -827,7 +827,7 @@ async def main():
         ),
     ) as cld_provisioning:
 
-        res = await cld_provisioning.roles.update(role_id="<id>", role={
+        res = await cld_provisioning.roles.update(role_id="<id>", update_role={
             "name": "Upload manager",
             "description": "Responsible for managing upload presets and uploading new assets.",
             "system_policy_ids": [
@@ -858,7 +858,7 @@ with CldProvisioning(
     ),
 ) as cld_provisioning:
 
-    res = cld_provisioning.roles.update(role_id="<id>", role={
+    res = cld_provisioning.roles.update(role_id="<id>", update_role={
         "name": "Upload manager",
         "description": "Responsible for managing upload presets and uploading new assets.",
         "system_policy_ids": [
@@ -891,7 +891,7 @@ async def main():
         ),
     ) as cld_provisioning:
 
-        res = await cld_provisioning.roles.update(role_id="<id>", role={
+        res = await cld_provisioning.roles.update(role_id="<id>", update_role={
             "name": "Upload manager",
             "description": "Responsible for managing upload presets and uploading new assets.",
             "system_policy_ids": [
@@ -922,7 +922,7 @@ with CldProvisioning(
     ),
 ) as cld_provisioning:
 
-    res = cld_provisioning.roles.update(role_id="<id>", role={
+    res = cld_provisioning.roles.update(role_id="<id>", update_role={
         "name": "Upload manager",
         "description": "Responsible for managing upload presets and uploading new assets.",
         "system_policy_ids": [
@@ -955,7 +955,7 @@ async def main():
         ),
     ) as cld_provisioning:
 
-        res = await cld_provisioning.roles.update(role_id="<id>", role={
+        res = await cld_provisioning.roles.update(role_id="<id>", update_role={
             "name": "Upload manager",
             "description": "Responsible for managing upload presets and uploading new assets.",
             "system_policy_ids": [
@@ -986,7 +986,7 @@ with CldProvisioning(
     ),
 ) as cld_provisioning:
 
-    res = cld_provisioning.roles.update(role_id="<id>", role={
+    res = cld_provisioning.roles.update(role_id="<id>", update_role={
         "name": "Upload manager",
         "description": "Responsible for managing uploads and uploading new assets.",
         "system_policy_ids": [
@@ -1019,7 +1019,7 @@ async def main():
         ),
     ) as cld_provisioning:
 
-        res = await cld_provisioning.roles.update(role_id="<id>", role={
+        res = await cld_provisioning.roles.update(role_id="<id>", update_role={
             "name": "Upload manager",
             "description": "Responsible for managing uploads and uploading new assets.",
             "system_policy_ids": [
@@ -1039,7 +1039,7 @@ asyncio.run(main())
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `role_id`                                                           | *str*                                                               | :heavy_check_mark:                                                  | A unique identifier for the role.                                   |
-| `role`                                                              | [models.Role](../../models/role.md)                                 | :heavy_check_mark:                                                  | Role details                                                        |
+| `update_role`                                                       | [models.UpdateRole](../../models/updaterole.md)                     | :heavy_check_mark:                                                  | Role details                                                        |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
@@ -1309,7 +1309,9 @@ with CldProvisioning(
                 "principal_type": cloudinary_account_provisioning.PrincipalTypeEnum.USER,
                 "principal_id": "1234abc",
                 "scope_id": "975l29lz02jt0836fhwi",
-                "policy_parameters": {},
+                "policy_parameters": {
+
+                },
             },
         ],
     })
@@ -1344,7 +1346,9 @@ async def main():
                     "principal_type": cloudinary_account_provisioning.PrincipalTypeEnum.USER,
                     "principal_id": "1234abc",
                     "scope_id": "975l29lz02jt0836fhwi",
-                    "policy_parameters": {},
+                    "policy_parameters": {
+
+                    },
                 },
             ],
         })
@@ -1377,7 +1381,9 @@ with CldProvisioning(
                 "principal_type": cloudinary_account_provisioning.PrincipalTypeEnum.USER,
                 "principal_id": "1234abc",
                 "scope_id": "975l29lz02jt0836fhwi",
-                "policy_parameters": {},
+                "policy_parameters": {
+
+                },
             },
         ],
     })
@@ -1412,7 +1418,9 @@ async def main():
                     "principal_type": cloudinary_account_provisioning.PrincipalTypeEnum.USER,
                     "principal_id": "1234abc",
                     "scope_id": "975l29lz02jt0836fhwi",
-                    "policy_parameters": {},
+                    "policy_parameters": {
+
+                    },
                 },
             ],
         })

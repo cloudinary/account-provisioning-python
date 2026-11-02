@@ -9,18 +9,12 @@ from cloudinary_account_provisioning.types import (
     OptionalNullable,
     UNSET,
     UNSET_SENTINEL,
+    current_exclude_none,
+    serialize_with_info,
 )
 from pydantic import field_serializer, model_serializer
-from typing import Optional
+from typing import Any, Dict, Optional
 from typing_extensions import NotRequired, TypedDict
-
-
-class UpdateRolePrincipalPolicyParametersTypedDict(TypedDict):
-    r"""For roles with `permission_type` set to `content`, provide the ID of the specific folder or collection you want the role to apply to, for example, `{\"folder_id\":\"asdfjkl12347890\"}`. This specification is passed to the `policy_statement`, written in Cedar language."""
-
-
-class UpdateRolePrincipalPolicyParameters(BaseModel):
-    r"""For roles with `permission_type` set to `content`, provide the ID of the specific folder or collection you want the role to apply to, for example, `{\"folder_id\":\"asdfjkl12347890\"}`. This specification is passed to the `policy_statement`, written in Cedar language."""
 
 
 class UpdateRolePrincipalTypedDict(TypedDict):
@@ -30,7 +24,7 @@ class UpdateRolePrincipalTypedDict(TypedDict):
     r"""The unique identifier of the principal."""
     scope_id: NotRequired[Nullable[str]]
     r"""The ID of a specific product environment where the role is applied. This parameter is only relevant if `scope_type` is \"prodenv\"."""
-    policy_parameters: NotRequired[UpdateRolePrincipalPolicyParametersTypedDict]
+    policy_parameters: NotRequired[Dict[str, Any]]
     r"""For roles with `permission_type` set to `content`, provide the ID of the specific folder or collection you want the role to apply to, for example, `{\"folder_id\":\"asdfjkl12347890\"}`. This specification is passed to the `policy_statement`, written in Cedar language."""
 
 
@@ -44,7 +38,7 @@ class UpdateRolePrincipal(BaseModel):
     scope_id: OptionalNullable[str] = UNSET
     r"""The ID of a specific product environment where the role is applied. This parameter is only relevant if `scope_type` is \"prodenv\"."""
 
-    policy_parameters: Optional[UpdateRolePrincipalPolicyParameters] = None
+    policy_parameters: Optional[Dict[str, Any]] = None
     r"""For roles with `permission_type` set to `content`, provide the ID of the specific folder or collection you want the role to apply to, for example, `{\"folder_id\":\"asdfjkl12347890\"}`. This specification is passed to the `policy_statement`, written in Cedar language."""
 
     @field_serializer("principal_type")
@@ -57,14 +51,20 @@ class UpdateRolePrincipal(BaseModel):
         return value
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(["scope_id", "policy_parameters"])
         nullable_fields = set(["scope_id"])
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields

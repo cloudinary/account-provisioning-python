@@ -42,6 +42,7 @@ if TYPE_CHECKING:
         CloudAssetTypeBreakdown,
         CloudAssetTypeBreakdownTypedDict,
     )
+    from .createcustompolicy import CreateCustomPolicy, CreateCustomPolicyTypedDict
     from .createcustompolicyop import (
         CreateCustomPolicyGlobals,
         CreateCustomPolicyGlobalsTypedDict,
@@ -61,13 +62,12 @@ if TYPE_CHECKING:
         CreateUserGlobalsTypedDict,
         CreateUserRequestBody,
         CreateUserRequestBodyTypedDict,
-        CreateUserRole,
+        Role,
     )
     from .custompoliciesresponse import (
         CustomPoliciesResponse,
         CustomPoliciesResponseTypedDict,
     )
-    from .custompolicy import CustomPolicy, CustomPolicyTypedDict
     from .custompolicyresponse import (
         CustomPolicyResponse,
         CustomPolicyResponseTypedDict,
@@ -262,21 +262,11 @@ if TYPE_CHECKING:
         InspectRequest1,
         InspectRequest1TypedDict,
     )
-    from .inspectrequest import (
-        InspectRequest,
-        InspectRequestPolicyParameters,
-        InspectRequestPolicyParametersTypedDict,
-        InspectRequestTypedDict,
-    )
+    from .inspectrequest import InspectRequest, InspectRequestTypedDict
     from .managementtypeenum import ManagementTypeEnum
     from .no_response_error import NoResponseError
     from .operationenum import OperationEnum
-    from .permissionserror import (
-        Details,
-        DetailsTypedDict,
-        PermissionsError,
-        PermissionsErrorTypedDict,
-    )
+    from .permissionserror import PermissionsError, PermissionsErrorTypedDict
     from .permissionserrorresponse import (
         PermissionsErrorResponse,
         PermissionsErrorResponseData,
@@ -285,17 +275,10 @@ if TYPE_CHECKING:
     from .principal import Principal, PrincipalTypedDict
     from .principalresponsedata import (
         PrincipalResponseData,
-        PrincipalResponseDataPolicyParameters,
-        PrincipalResponseDataPolicyParametersTypedDict,
         PrincipalResponseDataTypedDict,
     )
     from .principalrole import PrincipalRole, PrincipalRoleTypedDict
-    from .principalrolesdata import (
-        PolicyParameters,
-        PolicyParametersTypedDict,
-        PrincipalRolesData,
-        PrincipalRolesDataTypedDict,
-    )
+    from .principalrolesdata import PrincipalRolesData, PrincipalRolesDataTypedDict
     from .principalrolesinspectdata import (
         PrincipalRolesInspectData,
         PrincipalRolesInspectDataTypedDict,
@@ -336,7 +319,17 @@ if TYPE_CHECKING:
         RemoveUserFromUserGroupRequestTypedDict,
     )
     from .responsevalidationerror import ResponseValidationError
-    from .role import Role, RoleTypedDict
+    from .roleassignment import (
+        PolicyParameters,
+        PolicyParametersTypedDict,
+        RoleAssignment,
+        RoleAssignmentTypedDict,
+    )
+    from .rolemanagementrequest import (
+        Operation,
+        RoleManagementRequest,
+        RoleManagementRequestTypedDict,
+    )
     from .roleresponse import (
         RoleResponse,
         RoleResponseData1,
@@ -345,12 +338,7 @@ if TYPE_CHECKING:
     )
     from .roleresponsedata import RoleResponseData, RoleResponseDataTypedDict
     from .rolesresponse import RolesResponse, RolesResponseTypedDict
-    from .roletomanage import (
-        RoleToManage,
-        RoleToManagePolicyParameters,
-        RoleToManagePolicyParametersTypedDict,
-        RoleToManageTypedDict,
-    )
+    from .roletomanage import RoleToManage, RoleToManageTypedDict
     from .scopetypeenum import ScopeTypeEnum
     from .security import Security, SecurityTypedDict
     from .subaccountsummary import SubAccountSummary, SubAccountSummaryTypedDict
@@ -394,18 +382,14 @@ if TYPE_CHECKING:
         UpdateProductEnvironmentRequest,
         UpdateProductEnvironmentRequestTypedDict,
     )
+    from .updaterole import UpdateRole, UpdateRoleTypedDict
     from .updateroleop import (
         UpdateRoleGlobals,
         UpdateRoleGlobalsTypedDict,
         UpdateRoleRequest,
         UpdateRoleRequestTypedDict,
     )
-    from .updateroleprincipal import (
-        UpdateRolePrincipal,
-        UpdateRolePrincipalPolicyParameters,
-        UpdateRolePrincipalPolicyParametersTypedDict,
-        UpdateRolePrincipalTypedDict,
-    )
+    from .updateroleprincipal import UpdateRolePrincipal, UpdateRolePrincipalTypedDict
     from .updateroleprincipalsop import (
         UpdateRolePrincipalsGlobals,
         UpdateRolePrincipalsGlobalsTypedDict,
@@ -426,7 +410,10 @@ if TYPE_CHECKING:
         UpdateUserGlobals,
         UpdateUserGlobalsTypedDict,
         UpdateUserRequest,
+        UpdateUserRequestBody,
+        UpdateUserRequestBodyTypedDict,
         UpdateUserRequestTypedDict,
+        UpdateUserRole,
     )
     from .user import EmailPreferences, EmailPreferencesTypedDict, User, UserTypedDict
     from .usergroup import UserGroup, UserGroupTypedDict
@@ -442,7 +429,6 @@ if TYPE_CHECKING:
         UserGroupUsersResponse,
         UserGroupUsersResponseTypedDict,
     )
-    from .userrequest import UserRequest, UserRequestRole, UserRequestTypedDict
     from .usersresponse import UsersResponse, UsersResponseTypedDict
     from .usersubaccountsresponse import (
         UserSubAccountsResponse,
@@ -487,8 +473,10 @@ __all__ = [
     "CloudAssetTypeBreakdown",
     "CloudAssetTypeBreakdownTypedDict",
     "CloudinaryError",
+    "CreateCustomPolicy",
     "CreateCustomPolicyGlobals",
     "CreateCustomPolicyGlobalsTypedDict",
+    "CreateCustomPolicyTypedDict",
     "CreateProductEnvironmentGlobals",
     "CreateProductEnvironmentGlobalsTypedDict",
     "CreateRole",
@@ -501,17 +489,14 @@ __all__ = [
     "CreateUserGroupGlobalsTypedDict",
     "CreateUserRequestBody",
     "CreateUserRequestBodyTypedDict",
-    "CreateUserRole",
     "CustomAttributes",
     "CustomAttributesTypedDict",
     "CustomPoliciesResponse",
     "CustomPoliciesResponseTypedDict",
-    "CustomPolicy",
     "CustomPolicyResponse",
     "CustomPolicyResponseData",
     "CustomPolicyResponseDataTypedDict",
     "CustomPolicyResponseTypedDict",
-    "CustomPolicyTypedDict",
     "Cycles",
     "CyclesTypedDict",
     "Data",
@@ -545,8 +530,6 @@ __all__ = [
     "DeleteUserGroupRequestTypedDict",
     "DeleteUserRequest",
     "DeleteUserRequestTypedDict",
-    "Details",
-    "DetailsTypedDict",
     "EffectivePoliciesResponse",
     "EffectivePoliciesResponseTypedDict",
     "EffectivePolicy",
@@ -646,8 +629,6 @@ __all__ = [
     "InspectRequest",
     "InspectRequest1",
     "InspectRequest1TypedDict",
-    "InspectRequestPolicyParameters",
-    "InspectRequestPolicyParametersTypedDict",
     "InspectRequestTypedDict",
     "ManagementTypeEnum",
     "MetricUsage",
@@ -655,6 +636,7 @@ __all__ = [
     "MonthlyCycles",
     "MonthlyCyclesTypedDict",
     "NoResponseError",
+    "Operation",
     "OperationEnum",
     "PermissionTypeEnum",
     "PermissionsError",
@@ -665,8 +647,6 @@ __all__ = [
     "PolicyParametersTypedDict",
     "Principal",
     "PrincipalResponseData",
-    "PrincipalResponseDataPolicyParameters",
-    "PrincipalResponseDataPolicyParametersTypedDict",
     "PrincipalResponseDataTypedDict",
     "PrincipalRole",
     "PrincipalRoleTypedDict",
@@ -702,6 +682,10 @@ __all__ = [
     "RemoveUserFromUserGroupRequestTypedDict",
     "ResponseValidationError",
     "Role",
+    "RoleAssignment",
+    "RoleAssignmentTypedDict",
+    "RoleManagementRequest",
+    "RoleManagementRequestTypedDict",
     "RoleResponse",
     "RoleResponseData",
     "RoleResponseData1",
@@ -709,10 +693,7 @@ __all__ = [
     "RoleResponseDataTypedDict",
     "RoleResponseTypedDict",
     "RoleToManage",
-    "RoleToManagePolicyParameters",
-    "RoleToManagePolicyParametersTypedDict",
     "RoleToManageTypedDict",
-    "RoleTypedDict",
     "RolesResponse",
     "RolesResponseTypedDict",
     "ScopeTypeEnum",
@@ -749,11 +730,10 @@ __all__ = [
     "UpdateProductEnvironmentGlobalsTypedDict",
     "UpdateProductEnvironmentRequest",
     "UpdateProductEnvironmentRequestTypedDict",
+    "UpdateRole",
     "UpdateRoleGlobals",
     "UpdateRoleGlobalsTypedDict",
     "UpdateRolePrincipal",
-    "UpdateRolePrincipalPolicyParameters",
-    "UpdateRolePrincipalPolicyParametersTypedDict",
     "UpdateRolePrincipalTypedDict",
     "UpdateRolePrincipalsGlobals",
     "UpdateRolePrincipalsGlobalsTypedDict",
@@ -763,6 +743,7 @@ __all__ = [
     "UpdateRolePrincipalsRequestTypedDict",
     "UpdateRoleRequest",
     "UpdateRoleRequestTypedDict",
+    "UpdateRoleTypedDict",
     "UpdateUserGlobals",
     "UpdateUserGlobalsTypedDict",
     "UpdateUserGroupGlobals",
@@ -770,7 +751,10 @@ __all__ = [
     "UpdateUserGroupRequest",
     "UpdateUserGroupRequestTypedDict",
     "UpdateUserRequest",
+    "UpdateUserRequestBody",
+    "UpdateUserRequestBodyTypedDict",
     "UpdateUserRequestTypedDict",
+    "UpdateUserRole",
     "User",
     "UserGroup",
     "UserGroupRequest",
@@ -786,9 +770,6 @@ __all__ = [
     "UserGroupsListResponseTypedDict",
     "UserGroupsResponse",
     "UserGroupsResponseTypedDict",
-    "UserRequest",
-    "UserRequestRole",
-    "UserRequestTypedDict",
     "UserSubAccountsResponse",
     "UserSubAccountsResponseTypedDict",
     "UserTypedDict",
@@ -835,6 +816,8 @@ _dynamic_imports: dict[str, str] = {
     "CedarSchemaResponseTypedDict": ".cedarschemaresponse",
     "CloudAssetTypeBreakdown": ".cloudassettypebreakdown",
     "CloudAssetTypeBreakdownTypedDict": ".cloudassettypebreakdown",
+    "CreateCustomPolicy": ".createcustompolicy",
+    "CreateCustomPolicyTypedDict": ".createcustompolicy",
     "CreateCustomPolicyGlobals": ".createcustompolicyop",
     "CreateCustomPolicyGlobalsTypedDict": ".createcustompolicyop",
     "CreateProductEnvironmentGlobals": ".createproductenvironmentop",
@@ -849,11 +832,9 @@ _dynamic_imports: dict[str, str] = {
     "CreateUserGlobalsTypedDict": ".createuserop",
     "CreateUserRequestBody": ".createuserop",
     "CreateUserRequestBodyTypedDict": ".createuserop",
-    "CreateUserRole": ".createuserop",
+    "Role": ".createuserop",
     "CustomPoliciesResponse": ".custompoliciesresponse",
     "CustomPoliciesResponseTypedDict": ".custompoliciesresponse",
-    "CustomPolicy": ".custompolicy",
-    "CustomPolicyTypedDict": ".custompolicy",
     "CustomPolicyResponse": ".custompolicyresponse",
     "CustomPolicyResponseTypedDict": ".custompolicyresponse",
     "CustomPolicyResponseData": ".custompolicyresponsedata",
@@ -990,14 +971,10 @@ _dynamic_imports: dict[str, str] = {
     "InspectRequest1": ".inspectop",
     "InspectRequest1TypedDict": ".inspectop",
     "InspectRequest": ".inspectrequest",
-    "InspectRequestPolicyParameters": ".inspectrequest",
-    "InspectRequestPolicyParametersTypedDict": ".inspectrequest",
     "InspectRequestTypedDict": ".inspectrequest",
     "ManagementTypeEnum": ".managementtypeenum",
     "NoResponseError": ".no_response_error",
     "OperationEnum": ".operationenum",
-    "Details": ".permissionserror",
-    "DetailsTypedDict": ".permissionserror",
     "PermissionsError": ".permissionserror",
     "PermissionsErrorTypedDict": ".permissionserror",
     "PermissionsErrorResponse": ".permissionserrorresponse",
@@ -1006,13 +983,9 @@ _dynamic_imports: dict[str, str] = {
     "Principal": ".principal",
     "PrincipalTypedDict": ".principal",
     "PrincipalResponseData": ".principalresponsedata",
-    "PrincipalResponseDataPolicyParameters": ".principalresponsedata",
-    "PrincipalResponseDataPolicyParametersTypedDict": ".principalresponsedata",
     "PrincipalResponseDataTypedDict": ".principalresponsedata",
     "PrincipalRole": ".principalrole",
     "PrincipalRoleTypedDict": ".principalrole",
-    "PolicyParameters": ".principalrolesdata",
-    "PolicyParametersTypedDict": ".principalrolesdata",
     "PrincipalRolesData": ".principalrolesdata",
     "PrincipalRolesDataTypedDict": ".principalrolesdata",
     "PrincipalRolesInspectData": ".principalrolesinspectdata",
@@ -1043,8 +1016,13 @@ _dynamic_imports: dict[str, str] = {
     "RemoveUserFromUserGroupRequest": ".removeuserfromusergroupop",
     "RemoveUserFromUserGroupRequestTypedDict": ".removeuserfromusergroupop",
     "ResponseValidationError": ".responsevalidationerror",
-    "Role": ".role",
-    "RoleTypedDict": ".role",
+    "PolicyParameters": ".roleassignment",
+    "PolicyParametersTypedDict": ".roleassignment",
+    "RoleAssignment": ".roleassignment",
+    "RoleAssignmentTypedDict": ".roleassignment",
+    "Operation": ".rolemanagementrequest",
+    "RoleManagementRequest": ".rolemanagementrequest",
+    "RoleManagementRequestTypedDict": ".rolemanagementrequest",
     "RoleResponse": ".roleresponse",
     "RoleResponseData1": ".roleresponse",
     "RoleResponseData1TypedDict": ".roleresponse",
@@ -1054,8 +1032,6 @@ _dynamic_imports: dict[str, str] = {
     "RolesResponse": ".rolesresponse",
     "RolesResponseTypedDict": ".rolesresponse",
     "RoleToManage": ".roletomanage",
-    "RoleToManagePolicyParameters": ".roletomanage",
-    "RoleToManagePolicyParametersTypedDict": ".roletomanage",
     "RoleToManageTypedDict": ".roletomanage",
     "ScopeTypeEnum": ".scopetypeenum",
     "Security": ".security",
@@ -1088,13 +1064,13 @@ _dynamic_imports: dict[str, str] = {
     "UpdateProductEnvironmentGlobalsTypedDict": ".updateproductenvironmentop",
     "UpdateProductEnvironmentRequest": ".updateproductenvironmentop",
     "UpdateProductEnvironmentRequestTypedDict": ".updateproductenvironmentop",
+    "UpdateRole": ".updaterole",
+    "UpdateRoleTypedDict": ".updaterole",
     "UpdateRoleGlobals": ".updateroleop",
     "UpdateRoleGlobalsTypedDict": ".updateroleop",
     "UpdateRoleRequest": ".updateroleop",
     "UpdateRoleRequestTypedDict": ".updateroleop",
     "UpdateRolePrincipal": ".updateroleprincipal",
-    "UpdateRolePrincipalPolicyParameters": ".updateroleprincipal",
-    "UpdateRolePrincipalPolicyParametersTypedDict": ".updateroleprincipal",
     "UpdateRolePrincipalTypedDict": ".updateroleprincipal",
     "UpdateRolePrincipalsGlobals": ".updateroleprincipalsop",
     "UpdateRolePrincipalsGlobalsTypedDict": ".updateroleprincipalsop",
@@ -1109,7 +1085,10 @@ _dynamic_imports: dict[str, str] = {
     "UpdateUserGlobals": ".updateuserop",
     "UpdateUserGlobalsTypedDict": ".updateuserop",
     "UpdateUserRequest": ".updateuserop",
+    "UpdateUserRequestBody": ".updateuserop",
+    "UpdateUserRequestBodyTypedDict": ".updateuserop",
     "UpdateUserRequestTypedDict": ".updateuserop",
+    "UpdateUserRole": ".updateuserop",
     "EmailPreferences": ".user",
     "EmailPreferencesTypedDict": ".user",
     "User": ".user",
@@ -1128,9 +1107,6 @@ _dynamic_imports: dict[str, str] = {
     "UserGroupUserTypedDict": ".usergroupuser",
     "UserGroupUsersResponse": ".usergroupusersresponse",
     "UserGroupUsersResponseTypedDict": ".usergroupusersresponse",
-    "UserRequest": ".userrequest",
-    "UserRequestRole": ".userrequest",
-    "UserRequestTypedDict": ".userrequest",
     "UsersResponse": ".usersresponse",
     "UsersResponseTypedDict": ".usersresponse",
     "UserSubAccountsResponse": ".usersubaccountsresponse",

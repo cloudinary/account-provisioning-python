@@ -99,9 +99,11 @@ class CustomPolicies(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Custom Policies"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "500", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -130,7 +132,7 @@ class CustomPolicies(BaseSDK):
     def create(
         self,
         *,
-        request: Union[models.CustomPolicy, models.CustomPolicyTypedDict],
+        request: Union[models.CreateCustomPolicy, models.CreateCustomPolicyTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -158,8 +160,8 @@ class CustomPolicies(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.CustomPolicy)
-        request = cast(models.CustomPolicy, request)
+            request = utils.unmarshal(request, models.CreateCustomPolicy)
+        request = cast(models.CreateCustomPolicy, request)
 
         req = self._build_request(
             method="POST",
@@ -178,7 +180,7 @@ class CustomPolicies(BaseSDK):
             ),
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.CustomPolicy
+                request, False, False, "json", models.CreateCustomPolicy
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -201,9 +203,11 @@ class CustomPolicies(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Custom Policies"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "403", "409", "4XX", "500", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -301,9 +305,11 @@ class CustomPolicies(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Custom Policies"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -411,9 +417,11 @@ class CustomPolicies(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Custom Policies"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "403", "404", "409", "4XX", "500", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -511,9 +519,11 @@ class CustomPolicies(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Custom Policies"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -623,9 +633,11 @@ class AsyncCustomPolicies(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Custom Policies"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "500", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -654,7 +666,7 @@ class AsyncCustomPolicies(AsyncBaseSDK):
     async def create(
         self,
         *,
-        request: Union[models.CustomPolicy, models.CustomPolicyTypedDict],
+        request: Union[models.CreateCustomPolicy, models.CreateCustomPolicyTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -682,8 +694,8 @@ class AsyncCustomPolicies(AsyncBaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.CustomPolicy)
-        request = cast(models.CustomPolicy, request)
+            request = utils.unmarshal(request, models.CreateCustomPolicy)
+        request = cast(models.CreateCustomPolicy, request)
 
         req = self._build_request_async(
             method="POST",
@@ -702,7 +714,7 @@ class AsyncCustomPolicies(AsyncBaseSDK):
             ),
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.CustomPolicy
+                request, False, False, "json", models.CreateCustomPolicy
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -725,9 +737,11 @@ class AsyncCustomPolicies(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Custom Policies"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "403", "409", "4XX", "500", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -825,9 +839,11 @@ class AsyncCustomPolicies(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Custom Policies"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -935,9 +951,11 @@ class AsyncCustomPolicies(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Custom Policies"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "403", "404", "409", "4XX", "500", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -1035,9 +1053,11 @@ class AsyncCustomPolicies(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Custom Policies"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 

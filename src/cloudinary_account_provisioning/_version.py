@@ -3,11 +3,11 @@
 import importlib.metadata
 
 __title__: str = "cloudinary-account-provisioning"
-__version__: str = "0.1.3"
-__openapi_doc_version__: str = "0.2.1"
-__gen_version__: str = "2.879.6"
+__version__: str = "0.2.0"
+__openapi_doc_version__: str = "0.2.2"
+__gen_version__: str = "2.954.8"
 __user_agent__: str = (
-    "speakeasy-sdk/python 0.1.3 2.879.6 0.2.1 cloudinary-account-provisioning"
+    "speakeasy-sdk/python 0.2.0 2.954.8 0.2.2 cloudinary-account-provisioning"
 )
 
 try:
