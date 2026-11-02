@@ -1,11 +1,15 @@
 # Cloudinary Account Provisioning Python SDK
 
+[![PyPI Version](https://img.shields.io/pypi/v/cloudinary-account-provisioning.svg)](https://pypi.python.org/pypi/cloudinary-account-provisioning/)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/cloudinary-account-provisioning.svg)](https://pypi.python.org/pypi/cloudinary-account-provisioning/)
+[![License](https://img.shields.io/github/license/cloudinary/account-provisioning-python.svg)](https://github.com/cloudinary/account-provisioning-python/blob/main/LICENSE)
+
 Developer-friendly & type-safe Python SDK specifically catered to leverage *cloudinary-account-provisioning* API.
 
 <!-- Start Summary [summary] -->
 ## Summary
 
-Cloudinary Account Provisioning API: Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API.
+Cloudinary Account Provisioning API: Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API. 
 
 Provisioning API access is available [upon request](https://cloudinary.com/contact?plan=enterprise) for accounts on an [Enterprise plan](https://cloudinary.com/pricing#pricing-enterprise).
 
@@ -51,12 +55,10 @@ _Thank you for exploring this early release and helping us shape these tools to 
   * [Global Parameters](https://github.com/cloudinary/account-provisioning-python/blob/master/#global-parameters)
   * [Retries](https://github.com/cloudinary/account-provisioning-python/blob/master/#retries)
   * [Error Handling](https://github.com/cloudinary/account-provisioning-python/blob/master/#error-handling)
-* [Asynchronous Example](https://github.com/cloudinary/account-provisioning-python/blob/master/#asynchronous-example)
-* [Synchronous Example](https://github.com/cloudinary/account-provisioning-python/blob/master/#synchronous-example)
-* [Asynchronous Example](https://github.com/cloudinary/account-provisioning-python/blob/master/#asynchronous-example-1)
-* [Synchronous Example](https://github.com/cloudinary/account-provisioning-python/blob/master/#synchronous-example-1)
-* [Asynchronous Example](https://github.com/cloudinary/account-provisioning-python/blob/master/#asynchronous-example-2)
-* [Or when using async:](https://github.com/cloudinary/account-provisioning-python/blob/master/#or-when-using-async)
+  * [Server Selection](https://github.com/cloudinary/account-provisioning-python/blob/master/#server-selection)
+  * [Custom HTTP Client](https://github.com/cloudinary/account-provisioning-python/blob/master/#custom-http-client)
+  * [Resource Management](https://github.com/cloudinary/account-provisioning-python/blob/master/#resource-management)
+  * [Debugging](https://github.com/cloudinary/account-provisioning-python/blob/master/#debugging)
 * [Development](https://github.com/cloudinary/account-provisioning-python/blob/master/#development)
   * [Maturity](https://github.com/cloudinary/account-provisioning-python/blob/master/#maturity)
   * [Contributions](https://github.com/cloudinary/account-provisioning-python/blob/master/#contributions)
@@ -570,7 +572,8 @@ with CldProvisioning(
 
         # Depending on the method different errors may be thrown
         if isinstance(e, models.ErrorResponse):
-            print(e.data.error)  # Optional[cloudinary_account_provisioning.Error]```
+            print(e.data.error)  # Optional[cloudinary_account_provisioning.Error]
+```
 
 </br>
 
@@ -845,6 +848,20 @@ class CustomClient(AsyncHttpClient):
 
 s = CldProvisioning(async_client=CustomClient(httpx.AsyncClient()))
 ```
+### httpx2 (Pydantic's httpx fork)
+
+[httpx2](https://httpx2.pydantic.dev/) is Pydantic's maintained fork of `httpx`. To run this SDK on httpx2, call `alias_httpx()` at your program's entry point, before importing the SDK, so every `import httpx` — including the ones inside the SDK — resolves to `httpx2`:
+```python
+import httpx2
+
+httpx2.alias_httpx()
+
+from cloudinary_account_provisioning import CldProvisioning
+
+s = CldProvisioning()
+```
+
+An SDK can also be generated against httpx2 directly, so it depends on the fork instead of `httpx`, by setting `python.httpClientLibrary: httpx2` in `gen.yaml`.
 <!-- End Custom HTTP Client [http-client] -->
 
 <!-- Start Resource Management [resource-management] -->
@@ -867,6 +884,7 @@ def main():
         ),
     ) as cld_provisioning:
         # Rest of application here...
+        pass
 
 
 # Or when using async:
@@ -880,6 +898,7 @@ async def amain():
         ),
     ) as cld_provisioning:
         # Rest of application here...
+        pass
 ```
 <!-- End Resource Management [resource-management] -->
 

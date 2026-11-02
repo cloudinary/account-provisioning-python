@@ -1,10 +1,26 @@
-# Role
+# ~~Role~~
+
+The legacy role to assign. Deprecated: use `roles` (create) or `role_management` (update) instead. Can't be combined with `roles` or `role_management`.
+
+> :warning: **DEPRECATED**: Use `roles` (create) or `role_management` (update) instead..
+
+## Example Usage
+
+```python
+from cloudinary_account_provisioning.models import Role
+
+value = Role.MASTER_ADMIN
+```
 
 
-## Fields
+## Values
 
-| Field                                                                                                                                                                                               | Type                                                                                                                                                                                                | Required                                                                                                                                                                                            | Description                                                                                                                                                                                         | Example                                                                                                                                                                                             |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`                                                                                                                                                                                              | *str*                                                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                                                  | The name of the role.                                                                                                                                                                               | Upload manager                                                                                                                                                                                      |
-| `description`                                                                                                                                                                                       | *OptionalNullable[str]*                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                  | A short description of the role.                                                                                                                                                                    | Responsible for managing upload presets and uploading new assets.                                                                                                                                   |
-| `system_policy_ids`                                                                                                                                                                                 | List[*str*]                                                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                                  | A list of system permission policy IDs to be included in the role.<br/><br/>**Tip:** Get the list of all available predefined policies using the [Get system policies](#tag/policies/get/policies) method.<br/> | [<br/>"cld::policy::global::upload_presets::manage",<br/>"cld::policy::global::folder_and_asset_management::create_asset"<br/>]                                                                     |
+| Name                  | Value                 |
+| --------------------- | --------------------- |
+| `MASTER_ADMIN`        | master_admin          |
+| `ADMIN`               | admin                 |
+| `BILLING`             | billing               |
+| `TECHNICAL_ADMIN`     | technical_admin       |
+| `REPORTS`             | reports               |
+| `MEDIA_LIBRARY_ADMIN` | media_library_admin   |
+| `MEDIA_LIBRARY_USER`  | media_library_user    |

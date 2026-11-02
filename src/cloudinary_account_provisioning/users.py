@@ -91,9 +91,11 @@ class Users(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Users"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "404", "420", "429", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -190,19 +192,11 @@ class Users(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Users"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=[
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "420",
-                "429",
-                "4XX",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -296,9 +290,11 @@ class Users(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Users"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "404", "420", "429", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -323,7 +319,9 @@ class Users(BaseSDK):
         self,
         *,
         user_id: str,
-        user_request: Union[models.UserRequest, models.UserRequestTypedDict],
+        request_body: Union[
+            models.UpdateUserRequestBody, models.UpdateUserRequestBodyTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -335,7 +333,7 @@ class Users(BaseSDK):
         https://cloudinary.com/documentation/provisioning_api#update_user - Learn more about updating a specific user.
 
         :param user_id: The ID of the user.
-        :param user_request: User details to update.
+        :param request_body: User details to update.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -353,7 +351,9 @@ class Users(BaseSDK):
 
         request = models.UpdateUserRequest(
             user_id=user_id,
-            user_request=utils.get_pydantic_model(user_request, models.UserRequest),
+            request_body=utils.get_pydantic_model(
+                request_body, models.UpdateUserRequestBody
+            ),
         )
 
         req = self._build_request(
@@ -373,7 +373,7 @@ class Users(BaseSDK):
             ),
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.user_request, False, False, "json", models.UserRequest
+                request.request_body, False, False, "json", models.UpdateUserRequestBody
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -396,19 +396,11 @@ class Users(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Users"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=[
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "420",
-                "429",
-                "4XX",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -502,9 +494,11 @@ class Users(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Users"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "403", "404", "420", "429", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -596,9 +590,11 @@ class Users(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Users"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "404", "420", "429", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -690,9 +686,11 @@ class Users(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Users"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "404", "420", "429", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -794,9 +792,11 @@ class AsyncUsers(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Users"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "404", "420", "429", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -893,19 +893,11 @@ class AsyncUsers(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Users"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=[
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "420",
-                "429",
-                "4XX",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -999,9 +991,11 @@ class AsyncUsers(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Users"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "404", "420", "429", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -1026,7 +1020,9 @@ class AsyncUsers(AsyncBaseSDK):
         self,
         *,
         user_id: str,
-        user_request: Union[models.UserRequest, models.UserRequestTypedDict],
+        request_body: Union[
+            models.UpdateUserRequestBody, models.UpdateUserRequestBodyTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1038,7 +1034,7 @@ class AsyncUsers(AsyncBaseSDK):
         https://cloudinary.com/documentation/provisioning_api#update_user - Learn more about updating a specific user.
 
         :param user_id: The ID of the user.
-        :param user_request: User details to update.
+        :param request_body: User details to update.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1056,7 +1052,9 @@ class AsyncUsers(AsyncBaseSDK):
 
         request = models.UpdateUserRequest(
             user_id=user_id,
-            user_request=utils.get_pydantic_model(user_request, models.UserRequest),
+            request_body=utils.get_pydantic_model(
+                request_body, models.UpdateUserRequestBody
+            ),
         )
 
         req = self._build_request_async(
@@ -1076,7 +1074,7 @@ class AsyncUsers(AsyncBaseSDK):
             ),
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.user_request, False, False, "json", models.UserRequest
+                request.request_body, False, False, "json", models.UpdateUserRequestBody
             ),
             allow_empty_value=None,
             timeout_ms=timeout_ms,
@@ -1099,19 +1097,11 @@ class AsyncUsers(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Users"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=[
-                "400",
-                "401",
-                "403",
-                "404",
-                "409",
-                "420",
-                "429",
-                "4XX",
-                "5XX",
-            ],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -1205,9 +1195,11 @@ class AsyncUsers(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Users"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["400", "401", "403", "404", "420", "429", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -1299,9 +1291,11 @@ class AsyncUsers(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Users"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "404", "420", "429", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -1393,9 +1387,11 @@ class AsyncUsers(AsyncBaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["Users"],
+                extensions=None,
             ),
             request=req,
-            error_status_codes=["401", "404", "420", "429", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
